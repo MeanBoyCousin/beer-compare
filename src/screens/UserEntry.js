@@ -1,6 +1,39 @@
 import React from 'react'
 
-const UserEntry = () => {
+import { RadioButton } from '../components/UserEntry/RadioButton'
+
+const UserEntry = ({ drinks, setDrinks }) => {
+    const containers = {
+        pint: {
+            name: 'Pint',
+            volume: 568
+        },
+        halfPint: {
+            name: 'Half Pint',
+            volume: 284
+        },
+        twoThirds: {
+            name: '2/3rds Pint',
+            volume: 378
+        },
+        oneThirds: {
+            name: '1/3rd Pint',
+            volume: 189
+        },
+        '330ml': {
+            name: '330ml',
+            volume: 330
+        },
+        '440ml': {
+            name: '440ml',
+            volume: 440
+        },
+        '500ml': {
+            name: '500ml',
+            volume: 500
+        }
+    }
+
     return (
         <div>
             <h1>Beer Compare</h1>
@@ -8,48 +41,61 @@ const UserEntry = () => {
             <hr />
             <div>
                 <p>What percentage is the first beer?</p>
-                <input type="number" />
+                <input
+                    type="number"
+                    onBlur={e => {
+                        const newAbv = Number(e.currentTarget.value)
+                        setDrinks(drinks => ({
+                            ...drinks,
+                            drinkOne: {
+                                ...drinks.drinkOne,
+                                abv: newAbv
+                            }
+                        }))
+                    }}
+                />
                 <p>What size is the drink?</p>
-                <input type="radio" name="volume-one" id="pint" />
-                <label htmlFor="pint">Pint</label>
-                <input type="radio" name="volume-one" id="half-pint" />
-                <label htmlFor="half-pint">Half Pint</label>
-                <input type="radio" name="volume-one" id="two-third-pint" />
-                <label htmlFor="two-third-pint">2/3rds Pint</label>
-                <input type="radio" name="volume-one" id="one-third-pint" />
-                <label htmlFor="one-third-pint">1/3rd Pint</label>
-                <input type="radio" name="volume-one" id="330ml" />
-                <label htmlFor="330ml">330ml Can</label>
-                <input type="radio" name="volume-one" id="440ml" />
-                <label htmlFor="440ml">440ml Can</label>
-                <input type="radio" name="volume-one" id="500ml" />
-                <label htmlFor="500ml">500ml Can</label>
-                <input type="radio" name="volume-one" id="568ml" />
-                <label htmlFor="568ml">568ml Can</label>
+                {Object.values(containers).map(container => {
+                    return (
+                        <RadioButton
+                            stringIndex="one"
+                            container={container}
+                            drinks={drinks}
+                            setDrinks={setDrinks}
+                            key={`${container.volume}-one`}
+                        />
+                    )
+                })}
             </div>
             <div>
                 <p>What percentage is the second beer?</p>
-                <input type="number" />
+                <input
+                    type="number"
+                    onBlur={e => {
+                        const newAbv = Number(e.currentTarget.value)
+                        setDrinks(drinks => ({
+                            ...drinks,
+                            drinkTwo: {
+                                ...drinks.drinkTwo,
+                                abv: newAbv
+                            }
+                        }))
+                    }}
+                />
                 <p>What size is the drink?</p>
-                <input type="radio" name="volume-two" id="pint" />
-                <label htmlFor="pint">Pint</label>
-                <input type="radio" name="volume-two" id="half-pint" />
-                <label htmlFor="half-pint">Half Pint</label>
-                <input type="radio" name="volume-two" id="two-third-pint" />
-                <label htmlFor="two-third-pint">2/3rds Pint</label>
-                <input type="radio" name="volume-two" id="one-third-pint" />
-                <label htmlFor="one-third-pint">1/3rd Pint</label>
-                <input type="radio" name="volume-two" id="330ml" />
-                <label htmlFor="330ml">330ml Can</label>
-                <input type="radio" name="volume-two" id="440ml" />
-                <label htmlFor="440ml">440ml Can</label>
-                <input type="radio" name="volume-two" id="500ml" />
-                <label htmlFor="500ml">500ml Can</label>
-                <input type="radio" name="volume-two" id="568ml" />
-                <label htmlFor="568ml">568ml Can</label>
+                {Object.values(containers).map(container => {
+                    return (
+                        <RadioButton
+                            stringIndex="two"
+                            container={container}
+                            drinks={drinks}
+                            setDrinks={setDrinks}
+                            key={`${container.volume}-two`}
+                        />
+                    )
+                })}
             </div>
             <button>Compare</button>
-            <h1 className="my-class">hello</h1>
         </div>
     )
 }
