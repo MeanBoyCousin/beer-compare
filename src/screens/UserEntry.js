@@ -1,49 +1,22 @@
 import React from 'react'
 
+import { containers } from '../helpers/containers'
+import { ABVInput } from '../components/UserEntry/ABVInput'
 import { RadioButton } from '../components/UserEntry/RadioButton'
 
 const UserEntry = ({ drinks, setDrinks }) => {
-    const containers = {
-        pint: {
-            name: 'Pint',
-            volume: 568
-        },
-        halfPint: {
-            name: 'Half Pint',
-            volume: 284
-        },
-        twoThirds: {
-            name: '2/3rds Pint',
-            volume: 378
-        },
-        oneThirds: {
-            name: '1/3rd Pint',
-            volume: 189
-        },
-        '330ml': {
-            name: '330ml',
-            volume: 330
-        },
-        '440ml': {
-            name: '440ml',
-            volume: 440
-        },
-        '500ml': {
-            name: '500ml',
-            volume: 500
-        }
-    }
-
     return (
-        <div>
-            <h1>Beer Compare</h1>
-            <h2>Compare your beers, cut those calories!</h2>
-            <hr />
-            <div>
-                <p>What percentage is the first beer?</p>
-                <input
-                    type="number"
-                    onBlur={e => {
+        <div className="flex flex-col items-center text-center mt-4">
+            <h1 className="text-4xl">Beer Compare</h1>
+            <h2 className="text-lg">Compare your beers, cut those calories!</h2>
+            <hr className="border-primary-dark opacity-disabled my-4 w-full" />
+            <div className="flex flex-col items-center w-4/5 mb-4">
+                <p className="py-2 text-center">
+                    What percentage is the first beer?
+                </p>
+                <ABVInput
+                    placeholder="6.2"
+                    moveAway={e => {
                         const newAbv = Number(e.currentTarget.value)
                         setDrinks(drinks => ({
                             ...drinks,
@@ -54,24 +27,36 @@ const UserEntry = ({ drinks, setDrinks }) => {
                         }))
                     }}
                 />
-                <p>What size is the drink?</p>
-                {Object.values(containers).map(container => {
-                    return (
-                        <RadioButton
-                            stringIndex="one"
-                            container={container}
-                            drinks={drinks}
-                            setDrinks={setDrinks}
-                            key={`${container.volume}-one`}
-                        />
-                    )
-                })}
+                <p className="py-2 text-center">What size is the drink?</p>
+                <div className="flex flex-wrap mb-2">
+                    {Object.values(containers).map(container => {
+                        return (
+                            <RadioButton
+                                stringIndex="one"
+                                container={container}
+                                click={() => {
+                                    setDrinks(drinks => ({
+                                        ...drinks,
+                                        drinkOne: {
+                                            ...drinks.drinkOne,
+                                            volume: container.volume
+                                        }
+                                    }))
+                                }}
+                                selected={drinks.drinkOne.volume}
+                                key={`${container.volume}-one`}
+                            />
+                        )
+                    })}
+                </div>
             </div>
-            <div>
-                <p>What percentage is the second beer?</p>
-                <input
-                    type="number"
-                    onBlur={e => {
+            <div className="flex flex-col items-center w-4/5 mb-4">
+                <p className="py-2 text-center">
+                    What percentage is the second beer?
+                </p>
+                <ABVInput
+                    placeholder="5.6"
+                    moveAway={e => {
                         const newAbv = Number(e.currentTarget.value)
                         setDrinks(drinks => ({
                             ...drinks,
@@ -82,20 +67,30 @@ const UserEntry = ({ drinks, setDrinks }) => {
                         }))
                     }}
                 />
-                <p>What size is the drink?</p>
-                {Object.values(containers).map(container => {
-                    return (
-                        <RadioButton
-                            stringIndex="two"
-                            container={container}
-                            drinks={drinks}
-                            setDrinks={setDrinks}
-                            key={`${container.volume}-two`}
-                        />
-                    )
-                })}
+                <p className="py-2 text-center">What size is the drink?</p>
+                <div className="flex flex-wrap mb-2">
+                    {Object.values(containers).map(container => {
+                        return (
+                            <RadioButton
+                                stringIndex="two"
+                                container={container}
+                                click={() => {
+                                    setDrinks(drinks => ({
+                                        ...drinks,
+                                        drinkTwo: {
+                                            ...drinks.drinkTwo,
+                                            volume: container.volume
+                                        }
+                                    }))
+                                }}
+                                selected={drinks.drinkTwo.volume}
+                                key={`${container.volume}-two`}
+                            />
+                        )
+                    })}
+                </div>
             </div>
-            <button>Compare</button>
+            <button className="active-btn mb-4">Compare</button>
         </div>
     )
 }

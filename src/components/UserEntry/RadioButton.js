@@ -3,30 +3,25 @@ import React from 'react'
 const RadioButton = ({
     stringIndex,
     container: { name, volume },
-    drinks,
-    setDrinks
+    click,
+    selected
 }) => {
     return (
-        <>
+        <label className="flex flex-col flex-wrap items-center content-center text-center py-2 px-2 flex-grow w-1/3">
             <input
                 type="radio"
+                className={
+                    selected === volume
+                        ? 'form-radio mb-1 text-primary-active border-primary shadow-sm focus:shadow-sm focus:border-primary-active'
+                        : 'form-radio mb-1 border-primary-dark'
+                }
                 name={`volume-${stringIndex}`}
                 id={`${volume}-${stringIndex}`}
-                defaultChecked={
-                    drinks.drinkOne.volume === volume ? true : false
-                }
-                onClick={() => {
-                    setDrinks(drinks => ({
-                        ...drinks,
-                        drinkOne: {
-                            ...drinks.drinkOne,
-                            volume: volume
-                        }
-                    }))
-                }}
+                defaultChecked={selected === volume ? true : false}
+                onClick={click}
             />
-            <label htmlFor={`${volume}-${stringIndex}`}>{name}</label>
-        </>
+            <span>{name}</span>
+        </label>
     )
 }
 
