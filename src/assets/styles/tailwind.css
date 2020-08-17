@@ -1,3 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.active-btn {
+    -webkit-tap-highlight-color: transparent;
+    @apply bg-primary-light p-2 rounded-md transition-all ease-ease duration-small shadow-xs;
+}
+
+.active-btn:hover {
+    @apply bg-primary-light-hover shadow-sm;
+}
+
+.active-btn:active {
+    @apply bg-primary-light-active shadow-md;
+}
+
+.active-btn:focus {
+    @apply outline-none;
+}
