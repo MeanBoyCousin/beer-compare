@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import { containers } from '../helpers/containers'
 import { ABVInput } from '../components/UserEntry/ABVInput'
@@ -6,8 +7,8 @@ import { RadioButton } from '../components/UserEntry/RadioButton'
 
 const UserEntry = ({ drinks, setDrinks }) => {
     return (
-        <div className="flex flex-col items-center text-center mt-4">
-            <h1 className="text-4xl">Beer Compare</h1>
+        <div className="container">
+            <h1 className="text-4xl pt-2">Beer Compare</h1>
             <h2 className="text-lg">Compare your beers, cut those calories!</h2>
             <hr className="border-primary-dark opacity-disabled my-4 w-full" />
             <div className="flex flex-col items-center w-4/5 mb-4">
@@ -90,7 +91,9 @@ const UserEntry = ({ drinks, setDrinks }) => {
                     })}
                 </div>
             </div>
-            <button className="active-btn mb-4">Compare</button>
+            <Link className="active-btn mb-6" to="/pick">
+                Compare
+            </Link>
         </div>
     )
 }

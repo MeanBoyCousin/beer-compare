@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
-import { UserEntry } from './screens/UserEntry'
+import React, { useState, useEffect } from 'react'
+import { Switch, Route, useLocation, Redirect } from 'react-router-dom'
 
-import { calculateCalories } from './helpers/calculateCalories'
+import { CalCounter } from './components/CalCounter'
+import { UserEntry } from './screens/UserEntry'
+import { BeerCompare } from './screens/BeerCompare'
 
 const App = () => {
+    const location = useLocation()
+
     const [drinks, setDrinks] = useState({
         drinkOne: {
             abv: 0,
@@ -14,13 +18,50 @@ const App = () => {
             volume: 568
         }
     })
-
-    console.log(
-        calculateCalories(drinks.drinkOne),
-        calculateCalories(drinks.drinkTwo)
+    const [dailyCalories, setDailyCalories] = useState(
+        Number(localStorage.calories) || 0
     )
 
-    return <UserEntry drinks={drinks} setDrinks={setDrinks} />
+    const updateCalories = caloriesToAdd => {
+        setDailyCalories(dailyCalories + caloriesToAdd)
+    }
+
+    useEffect(() => {
+        localStorage.calories = dailyCalories
+    }, [dailyCalories])
+
+    useEffect(() => {
+        const today = new Date().getDate()
+        if (
+            Number(localStorage.date) !== today ||
+            localStorage.calories === undefined
+        ) {
+            localStorage.date = new Date().getDate()
+            localStorage.calories = 0
+            setDailyCalories(0)
+        }
+    }, [])
+
+    return (
+        <>
+            <CalCounter
+                calories={dailyCalories}
+                setDailyCalories={setDailyCalories}
+            />
+            <Switch location={location} key={location.key}>
+                <Route exact path="/">
+                    <UserEntry drinks={drinks} setDrinks={setDrinks} />
+                </Route>
+                <Route path="/pick">
+                    <BeerCompare
+                        drinks={drinks}
+                        updateCalories={updateCalories}
+                    />
+                </Route>
+                <Redirect from="*" to="/" />
+            </Switch>
+        </>
+    )
 }
 
 export { App }

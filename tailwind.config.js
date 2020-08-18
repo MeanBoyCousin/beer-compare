@@ -6,6 +6,16 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Montserrat', ...defaultTheme.fontFamily.sans]
+            },
+            height: {
+                '10vh': '10vh',
+                '90vh': '90vh'
+            },
+            transitionDelay: {
+                '1500': '1500ms'
+            },
+            animation: {
+                ping: 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite'
             }
         },
         screens: { sm: '568px', md: '768px', lg: '992px', xl: '1200px' },
@@ -14,6 +24,7 @@ module.exports = {
             'primary-hover': 'rgb(227, 133, 26)',
             'primary-active': 'rgb(198, 116, 23)',
             'primary-light': 'rgb(255, 191, 81)',
+            'primary-light-50': 'rgba(255, 191, 81, 0.5)',
             'primary-light-hover': 'rgb(240, 180, 76)',
             'primary-light-active': 'rgb(209, 157, 66)',
             'primary-dark': 'rgb(185, 96, 0)',
@@ -40,7 +51,11 @@ module.exports = {
                 '0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.20)',
             inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
             outline: '0 0 0 3px rgba(242, 142, 28, 0.5)',
-            none: 'none'
+            none: 'none',
+            error:
+                '0 8px 10px 1px rgba(244,67,54,0.14), 0 3px 14px 2px rgba(244,67,54,0.12), 0 5px 5px -3px rgba(244,67,54,0.20)',
+            success:
+                '0 8px 10px 1px rgba(76,175,80,0.14), 0 3px 14px 2px rgba(76,175,80,0.12), 0 5px 5px -3px rgba(76,175,80,0.20)'
         },
         opacity: {
             '0': '0',
@@ -66,7 +81,8 @@ module.exports = {
             'medium-in': '250ms',
             'medium-out': '200ms',
             'large-in': '300ms',
-            'large-out': '250ms'
+            'large-out': '250ms',
+            long: '1000ms'
         }
     },
     variants: { backgroundColor: ['responsive', 'hover', 'focus', 'active'] },

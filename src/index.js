@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker'
 
 import { App } from './App'
@@ -7,9 +8,9 @@ import { App } from './App'
 import './assets/styles/tailwind.bundle.css'
 
 ReactDOM.render(
-    <React.StrictMode>
+    <Router>
         <App />
-    </React.StrictMode>,
+    </Router>,
     document.getElementById('root')
 )
 
