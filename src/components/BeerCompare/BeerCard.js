@@ -17,9 +17,9 @@ const BeerCard = ({
         <div
             className={
                 isSelected && isBestChoice
-                    ? `shadow-success ${commonCardClasses}`
+                    ? `shadow-success ${commonCardClasses} animate-pulse`
                     : isSelected && !isBestChoice
-                    ? `shadow-error ${commonCardClasses}`
+                    ? `shadow-error ${commonCardClasses} animate-pulse`
                     : `shadow-xs hover:shadow-sm ${commonCardClasses}`
             }
             onClick={() => {

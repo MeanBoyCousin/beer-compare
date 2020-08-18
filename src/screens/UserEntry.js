@@ -17,6 +17,7 @@ const UserEntry = ({ drinks, setDrinks }) => {
                 </p>
                 <ABVInput
                     placeholder="6.2"
+                    value={drinks.drinkOne.abv}
                     moveAway={e => {
                         const newAbv = Number(e.currentTarget.value)
                         setDrinks(drinks => ({
@@ -57,6 +58,7 @@ const UserEntry = ({ drinks, setDrinks }) => {
                 </p>
                 <ABVInput
                     placeholder="5.6"
+                    value={drinks.drinkTwo.abv}
                     moveAway={e => {
                         const newAbv = Number(e.currentTarget.value)
                         setDrinks(drinks => ({
