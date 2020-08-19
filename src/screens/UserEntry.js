@@ -7,7 +7,7 @@ import { RadioButton } from '../components/UserEntry/RadioButton'
 
 const UserEntry = ({ drinks, setDrinks }) => {
     return (
-        <div className="container">
+        <div className="flex flex-col items-center text-center">
             <h1 className="text-4xl pt-2">Beer Compare</h1>
             <h2 className="text-lg">Compare your beers, cut those calories!</h2>
             <hr className="border-primary-dark opacity-disabled my-4 w-full" />

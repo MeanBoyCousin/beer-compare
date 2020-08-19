@@ -4,6 +4,7 @@ import { Switch, Route, useLocation, Redirect } from 'react-router-dom'
 import { CalCounter } from './components/CalCounter'
 import { UserEntry } from './screens/UserEntry'
 import { BeerCompare } from './screens/BeerCompare'
+import { BeerAdded } from './screens/BeerAdded'
 
 const App = () => {
     const location = useLocation()
@@ -57,6 +58,9 @@ const App = () => {
                         drinks={drinks}
                         updateCalories={updateCalories}
                     />
+                </Route>
+                <Route path="/added">
+                    <BeerAdded />
                 </Route>
                 <Redirect from="*" to="/" />
             </Switch>

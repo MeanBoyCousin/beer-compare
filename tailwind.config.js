@@ -7,15 +7,31 @@ module.exports = {
             fontFamily: {
                 sans: ['Montserrat', ...defaultTheme.fontFamily.sans]
             },
+            flexGrow: {
+                small: 0.001,
+                2: 2
+            },
             height: {
                 '10vh': '10vh',
-                '90vh': '90vh'
+                '90vh': '90vh',
+                125: '125vh',
+                150: '150vh'
             },
             transitionDelay: {
                 '1500': '1500ms'
             },
             animation: {
                 ping: 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite'
+            },
+            keyframes: {
+                pulse: {
+                    '0%, 100%': {
+                        opacity: 1
+                    },
+                    '50%': {
+                        opacity: 0.7
+                    }
+                }
             }
         },
         screens: { sm: '568px', md: '768px', lg: '992px', xl: '1200px' },

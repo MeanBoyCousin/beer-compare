@@ -35,10 +35,6 @@ body {
     @apply outline-none;
 }
 
-.container {
-    @apply flex flex-col items-center text-center;
-}
-
 .ping-offset {
     top: -0.375rem;
     right: -0.375rem;

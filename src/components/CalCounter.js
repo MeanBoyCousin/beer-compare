@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import CountUp from 'react-countup'
-import { calculateCalories } from '../helpers/calculateCalories'
 
 const CalCounter = ({ calories, setDailyCalories }) => {
     const [pingVisible, setPingVisible] = useState(false)
@@ -16,19 +15,17 @@ const CalCounter = ({ calories, setDailyCalories }) => {
         }
     }, [calories])
 
-    const easingFn = (t, b, c, d) => {
-        return c * ((t = t / d - 1) * t * t + 1) + b
-    }
-
     return (
-        <div className="relative flex justify-end items-center pb-2 h-10vh box-border">
+        <div className="relative z-20 flex justify-end items-center pb-2 h-10vh box-border">
             <span className="relative flex justify-center items-center mt-4 mr-4 rounded-md border border-info border-opacity-disabled bg-white shadow-sm">
                 <CountUp
                     className="p-2 border-r border-info"
                     start={0}
                     end={calories}
                     duration={2}
-                    easingFn={easingFn}
+                    easingFn={(t, b, c, d) => {
+                        return c * ((t = t / d - 1) * t * t + 1) + b
+                    }}
                     preserveValue={true}
                     separator=","
                     prefix="Today's beers - "

@@ -15,12 +15,13 @@ const BeerCompare = ({ drinks, updateCalories }) => {
         calculateCalories(drinks.drinkOne) <= calculateCalories(drinks.drinkTwo)
 
     return (
-        <div className="container pt-4 pb-4 h-90vh box-border">
-            <h1 className="text-lg flex items-center flex-grow">
-                Pick a beer and then hit submit.
+        <div className="flex flex-col items-center text-center pt-4 pb-4 h-90vh box-border">
+            <h1 className="text-xl flex items-center flex-none">
+                Pick a beer and then hit drink!
             </h1>
             <BeerCard
                 title="Beer One"
+                key="beer-one"
                 position={1}
                 drink={drinks.drinkOne}
                 isSelected={selected === 1 ? true : false}
@@ -29,19 +30,20 @@ const BeerCompare = ({ drinks, updateCalories }) => {
             />
             <BeerCard
                 title="Beer Two"
+                key="beer-two"
                 position={2}
                 drink={drinks.drinkTwo}
                 isSelected={selected === 2 ? true : false}
                 isBestChoice={bestChoice ? false : true}
                 pickDrink={pickDrink}
             />
-            <div className="flex justify-evenly w-4/5 flex-grow mb-4 mt-2">
+            <div className="flex justify-evenly w-4/5 mb-4 mt-2 flex-none">
                 <Link className="active-btn" to="/">
                     Back
                 </Link>
                 <Link
                     className={selected === 0 ? 'disabled-btn' : 'active-btn'}
-                    to="/"
+                    to="/added"
                     onClick={() => {
                         selected - 1 >= 0 &&
                             updateCalories(
@@ -51,7 +53,7 @@ const BeerCompare = ({ drinks, updateCalories }) => {
                             )
                     }}
                 >
-                    Submit
+                    Drink
                 </Link>
             </div>
         </div>
@@ -59,8 +61,3 @@ const BeerCompare = ({ drinks, updateCalories }) => {
 }
 
 export { BeerCompare }
-
-// console.log(
-//     calculateCalories(drinks.drinkOne),
-//     calculateCalories(drinks.drinkTwo)
-// )
