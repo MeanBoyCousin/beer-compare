@@ -4,7 +4,7 @@ const Toggle = ({ offLabel, onLabel, initial, setThreshold }) => {
     return (
         <label
             htmlFor="toggle"
-            className="flex items-center cursor-pointer p-2"
+            className="flex items-center cursor-pointer p-2 no-tap-highlight"
         >
             <div className="relative">
                 <input

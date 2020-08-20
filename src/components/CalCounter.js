@@ -3,7 +3,7 @@ import CountUp from 'react-countup'
 
 const CalCounter = ({ calories, setDailyCalories, threshold }) => {
     const [pingVisible, setPingVisible] = useState(false)
-    console.log(threshold)
+
     useEffect(() => {
         setPingVisible(true)
         const pingTimer = setTimeout(() => {
