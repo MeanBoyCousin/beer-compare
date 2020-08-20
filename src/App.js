@@ -80,7 +80,7 @@ const App = () => {
                     />
                 </Route>
                 <Route path="/added">
-                    <BeerAdded />
+                    <BeerAdded calories={dailyCalories} />
                 </Route>
                 <Redirect from="*" to="/" />
             </Switch>

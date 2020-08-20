@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
+import { calculateLightBulb } from '../helpers/calculateLightBulb'
+
 const svgVariant = {
     hidden: { y: '100%', opacity: 0 },
     animate: {
@@ -49,7 +51,7 @@ const cardVariant = {
     }
 }
 
-const BeerAdded = () => {
+const BeerAdded = ({ calories }) => {
     const [message, setMessage] = useState('')
 
     useEffect(() => {
@@ -150,8 +152,13 @@ const BeerAdded = () => {
                 exit="exit"
             >
                 <div className="modal">
-                    <p className="text-black text-4xl m-2">{message}</p>
-                    <Link className="active-btn m-2" to="/">
+                    <p className="text-black text-3xl mt-2">{message}</p>
+                    <p className="text-black text-xs my-2">
+                        Did you know that you've drunk enough so far today to
+                        power a 60-watt light bulb for{' '}
+                        {calculateLightBulb(calories)}!?
+                    </p>
+                    <Link className="active-btn my-2" to="/">
                         Another?
                     </Link>
                 </div>
