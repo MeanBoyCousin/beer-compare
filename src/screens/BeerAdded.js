@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
@@ -50,13 +50,22 @@ const cardVariant = {
 }
 
 const BeerAdded = () => {
-    const messages = [
-        'A wise choice!',
-        'Cheers!',
-        'Enjoy it!',
-        'Every calorie counts!',
-        "Make sure it's a cold one!"
-    ]
+    const [message, setMessage] = useState('')
+
+    useEffect(() => {
+        const messages = [
+            'A wise choice!',
+            'Cheers!',
+            'Enjoy it!',
+            'Every calorie counts!',
+            "Make sure it's a cold one!"
+        ]
+
+        const randomMessage =
+            messages[Math.floor(Math.random() * messages.length)]
+
+        setMessage(randomMessage)
+    }, [])
 
     return (
         <div className="flex flex-col items-center text-center relative">
@@ -141,9 +150,7 @@ const BeerAdded = () => {
                 exit="exit"
             >
                 <div className="modal">
-                    <p className="text-black text-4xl m-2">
-                        {messages[Math.floor(Math.random() * messages.length)]}
-                    </p>
+                    <p className="text-black text-4xl m-2">{message}</p>
                     <Link className="active-btn m-2" to="/">
                         Another?
                     </Link>

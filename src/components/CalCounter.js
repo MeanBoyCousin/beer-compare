@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import CountUp from 'react-countup'
 
-const CalCounter = ({ calories, setDailyCalories }) => {
+const CalCounter = ({ calories, setDailyCalories, threshold }) => {
     const [pingVisible, setPingVisible] = useState(false)
-
+    console.log(threshold)
     useEffect(() => {
         setPingVisible(true)
         const pingTimer = setTimeout(() => {
@@ -15,11 +15,22 @@ const CalCounter = ({ calories, setDailyCalories }) => {
         }
     }, [calories])
 
+    const countUpBaseClasses =
+        'p-2 border-r border-info transition-all duration-2s'
+
     return (
         <div className="relative flex justify-end items-center pb-2 w-4/5 h-10vh box-border">
             <span className="relative flex justify-center items-center mt-4 mr-4 rounded-md border border-info border-opacity-disabled bg-white shadow-sm">
                 <CountUp
-                    className="p-2 border-r border-info"
+                    className={
+                        threshold.state === true &&
+                        calories >= threshold.calories
+                            ? `text-error ${countUpBaseClasses}`
+                            : threshold.state === true &&
+                              calories >= threshold.calories * 0.8
+                            ? `text-error-light ${countUpBaseClasses}`
+                            : `text-black ${countUpBaseClasses}`
+                    }
                     start={0}
                     end={calories}
                     duration={2}

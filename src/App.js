@@ -10,11 +10,12 @@ import { BeerAdded } from './screens/BeerAdded'
 const App = () => {
     const location = useLocation()
 
-    const [threshold, setThreshold] = useState({
-        state: false,
-        calories: 800
-    })
-    console.log(threshold)
+    const [threshold, setThreshold] = useState(
+        JSON.parse(localStorage.threshold) || {
+            state: false,
+            calories: 800
+        }
+    )
 
     const [drinks, setDrinks] = useState({
         drinkOne: {
@@ -34,6 +35,10 @@ const App = () => {
     const updateCalories = caloriesToAdd => {
         setDailyCalories(dailyCalories + caloriesToAdd)
     }
+
+    useEffect(() => {
+        localStorage.threshold = JSON.stringify(threshold)
+    }, [threshold])
 
     useEffect(() => {
         localStorage.calories = dailyCalories
@@ -61,6 +66,7 @@ const App = () => {
                 <CalCounter
                     calories={dailyCalories}
                     setDailyCalories={setDailyCalories}
+                    threshold={threshold}
                 />
             </div>
             <Switch location={location} key={location.key}>

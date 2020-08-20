@@ -53,6 +53,7 @@ module.exports = {
             'black-disabled': 'rgba(0,0,0,0.38)',
             white: 'rgb(255,255,255)',
             error: 'rgb(244,67,54)',
+            'error-light': 'rgb(255,121,97)',
             warning: 'rgb(255, 204, 0)',
             info: 'rgb(33,150,243)',
             success: 'rgb(76,175,80)',
@@ -102,7 +103,8 @@ module.exports = {
             'medium-out': '200ms',
             'large-in': '300ms',
             'large-out': '250ms',
-            long: '1000ms'
+            long: '1000ms',
+            '2s': '2000ms'
         }
     },
     variants: {
