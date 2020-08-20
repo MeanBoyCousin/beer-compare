@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Switch, Route, useLocation, Redirect } from 'react-router-dom'
 
+import { ThresholdSettings } from './components/ThresholdSettings'
 import { CalCounter } from './components/CalCounter'
 import { UserEntry } from './screens/UserEntry'
 import { BeerCompare } from './screens/BeerCompare'
@@ -8,6 +9,12 @@ import { BeerAdded } from './screens/BeerAdded'
 
 const App = () => {
     const location = useLocation()
+
+    const [threshold, setThreshold] = useState({
+        state: false,
+        calories: 800
+    })
+    console.log(threshold)
 
     const [drinks, setDrinks] = useState({
         drinkOne: {
@@ -19,6 +26,7 @@ const App = () => {
             volume: 568
         }
     })
+
     const [dailyCalories, setDailyCalories] = useState(
         Number(localStorage.calories) || 0
     )
@@ -45,10 +53,16 @@ const App = () => {
 
     return (
         <>
-            <CalCounter
-                calories={dailyCalories}
-                setDailyCalories={setDailyCalories}
-            />
+            <div className="w-full flex sticky top-0 z-20">
+                <ThresholdSettings
+                    threshold={threshold}
+                    setThreshold={setThreshold}
+                />
+                <CalCounter
+                    calories={dailyCalories}
+                    setDailyCalories={setDailyCalories}
+                />
+            </div>
             <Switch location={location} key={location.key}>
                 <Route exact path="/">
                     <UserEntry drinks={drinks} setDrinks={setDrinks} />

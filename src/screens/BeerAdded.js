@@ -49,15 +49,15 @@ const cardVariant = {
     }
 }
 
-const messages = [
-    'A wise choice!',
-    'Cheers!',
-    'Enjoy it!',
-    'Every calorie counts!',
-    "Make sure it's a cold one!"
-]
-
 const BeerAdded = () => {
+    const messages = [
+        'A wise choice!',
+        'Cheers!',
+        'Enjoy it!',
+        'Every calorie counts!',
+        "Make sure it's a cold one!"
+    ]
+
     return (
         <div className="flex flex-col items-center text-center relative">
             <motion.svg
@@ -140,7 +140,7 @@ const BeerAdded = () => {
                 animate="animate"
                 exit="exit"
             >
-                <div className="flex flex-col items-center p-2 shadow-xs bg-white rounded-md w-4/5">
+                <div className="modal">
                     <p className="text-black text-4xl m-2">
                         {messages[Math.floor(Math.random() * messages.length)]}
                     </p>

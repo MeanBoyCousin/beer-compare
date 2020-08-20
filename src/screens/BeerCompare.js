@@ -42,7 +42,11 @@ const BeerCompare = ({ drinks, updateCalories }) => {
                     Back
                 </Link>
                 <Link
-                    className={selected === 0 ? 'disabled-btn' : 'active-btn'}
+                    className={
+                        selected === 0
+                            ? 'disabled-btn pointer-events-none'
+                            : 'active-btn'
+                    }
                     to="/added"
                     onClick={() => {
                         selected - 1 >= 0 &&

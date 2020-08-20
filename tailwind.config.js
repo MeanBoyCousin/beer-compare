@@ -17,6 +17,9 @@ module.exports = {
                 125: '125vh',
                 150: '150vh'
             },
+            inset: {
+                'toggle-full': '1.5rem'
+            },
             transitionDelay: {
                 '1500': '1500ms'
             },
@@ -47,6 +50,7 @@ module.exports = {
             'primary-dark-hover': 'rgb(174, 90, 0)',
             'primary-dark-active': 'rgb(152, 79, 0)',
             black: 'rgb(0, 0, 0)',
+            'black-disabled': 'rgba(0,0,0,0.38)',
             white: 'rgb(255,255,255)',
             error: 'rgb(244,67,54)',
             warning: 'rgb(255, 204, 0)',
@@ -101,6 +105,9 @@ module.exports = {
             long: '1000ms'
         }
     },
-    variants: { backgroundColor: ['responsive', 'hover', 'focus', 'active'] },
+    variants: {
+        backgroundColor: ['responsive', 'hover', 'focus', 'active'],
+        boxShadow: ['responsive', 'hover', 'focus', 'active']
+    },
     plugins: [require('@tailwindcss/custom-forms')]
 }
