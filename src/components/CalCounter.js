@@ -1,5 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import CountUp from 'react-countup'
+import { motion, AnimatePresence } from 'framer-motion'
+
+const pingVariant = {
+    hidden: { opacity: 0 },
+    animate: {
+        opacity: 1,
+        transition: {
+            duration: 0.5,
+            ease: [0, 0, 0.2, 1]
+        }
+    },
+    exit: {
+        opacity: 0,
+        transition: {
+            duration: 0.4,
+            ease: [0.4, 0, 1, 1]
+        }
+    }
+}
 
 const CalCounter = ({ calories, setDailyCalories, threshold }) => {
     const [pingVisible, setPingVisible] = useState(false)
@@ -42,12 +61,20 @@ const CalCounter = ({ calories, setDailyCalories, threshold }) => {
                     prefix="Today's beers - "
                     suffix=" kcal"
                 />
-                {pingVisible && (
-                    <span className="absolute flex h-3 w-3 ping-offset opacity-70">
-                        <span className="animate-ping absolute h-3 w-3 rounded-md bg-info"></span>
-                        <span className="relative inline-flex rounded-md h-3 w-3 bg-info"></span>
-                    </span>
-                )}
+                <AnimatePresence>
+                    {pingVisible && (
+                        <motion.span
+                            className="absolute flex h-3 w-3 ping-offset opacity-70"
+                            variants={pingVariant}
+                            initial="hidden"
+                            animate="animate"
+                            exit="exit"
+                        >
+                            <span className="animate-ping absolute h-3 w-3 rounded-md bg-info"></span>
+                            <span className="relative inline-flex rounded-md h-3 w-3 bg-info"></span>
+                        </motion.span>
+                    )}
+                </AnimatePresence>
                 <svg
                     viewBox="0 0 24 24"
                     fill="none"
