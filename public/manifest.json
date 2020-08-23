@@ -1,0 +1,25 @@
+{
+    "name": "Beer Compare",
+    "short_name": "Beer Compare",
+    "lang": "en",
+    "description": "Compare the calories in your beers and keep a track of your drinking sessions.",
+    "theme_color": "#ffdea7",
+    "background_color": "#ffdea7",
+    "display": "standalone",
+    "orientation": "portrait",
+    "Scope": "/",
+    "start_url": "/",
+    "icons": [
+        {
+            "src": "./android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "./android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "splash_pages": null
+}
