@@ -6,15 +6,16 @@ import { CalCounter } from './components/CalCounter'
 import { UserEntry } from './screens/UserEntry'
 import { BeerCompare } from './screens/BeerCompare'
 import { BeerAdded } from './screens/BeerAdded'
+import { About } from './screens/About'
+import { Footer } from './components/Footer'
 
 const App = () => {
     const location = useLocation()
 
     const [threshold, setThreshold] = useState(
-        JSON.parse(localStorage.threshold) || {
-            state: false,
-            calories: 800
-        }
+        localStorage.threshold === undefined
+            ? { state: false, calories: 800 }
+            : JSON.parse(localStorage.threshold)
     )
 
     const [drinks, setDrinks] = useState({
@@ -82,8 +83,12 @@ const App = () => {
                 <Route path="/added">
                     <BeerAdded calories={dailyCalories} />
                 </Route>
+                <Route path="/about">
+                    <About />
+                </Route>
                 <Redirect from="*" to="/" />
             </Switch>
+            <Footer />
         </>
     )
 }
