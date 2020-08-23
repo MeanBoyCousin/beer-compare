@@ -3,7 +3,7 @@
 @tailwind base;
 
 body {
-    @apply bg-primary-light-50;
+    @apply bg-primary-lighter;
 }
 
 @tailwind components;
@@ -43,6 +43,10 @@ body {
 .settings-btn {
     /* -webkit-tap-highlight-color: transparent; */
     @apply flex items-center justify-center bg-white p-2 rounded-md transition-all ease-ease duration-small shadow-xs border border-info border-opacity-disabled box-border;
+}
+
+.footer-btn {
+    @apply p-2 rounded-md text-xs underline no-tap-highlight cursor-pointer transition-colors duration-small
 }
 
 .ping-offset {

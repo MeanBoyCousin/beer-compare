@@ -9,15 +9,15 @@ const UserEntry = ({ drinks, setDrinks }) => {
     const [currentBeer, setCurrentBeer] = useState(1)
 
     return (
-        <div className="flex flex-col items-center text-center h-90vh">
-            <h1 className="text-4xl pt-2">Beer Compare</h1>
-            <h2 className="text-lg pt-2">
+        <div className="flex flex-col items-center text-center h-80vh">
+            <h1 className="text-3xl w-4/5">Beer Compare</h1>
+            <h2 className="text-sm pb-2 w-4/5">
                 Compare your beers, cut those calories!
             </h2>
-            <hr className="border-primary-dark opacity-disabled my-4 w-full" />
+            <hr className="border-primary-dark opacity-disabled my-2 w-full" />
             {currentBeer === 1 ? (
-                <div className="flex flex-col items-center justify-center flex-grow w-4/5 mb-4">
-                    <p className="py-2 text-center text-lg">
+                <div className="flex flex-col items-center justify-center flex-grow w-4/5">
+                    <p className="pb-2 text-center text-lg">
                         What percentage is the first beer to compare?
                     </p>
                     <ABVInput
@@ -61,8 +61,8 @@ const UserEntry = ({ drinks, setDrinks }) => {
                     </div>
                 </div>
             ) : (
-                <div className="flex flex-col items-center justify-center flex-grow w-4/5 mb-4">
-                    <p className="py-2 text-center text-lg">
+                <div className="flex flex-col items-center justify-center flex-grow w-4/5">
+                    <p className="pb-2 text-center text-lg">
                         What percentage is the second beer to compare?
                     </p>
                     <ABVInput
@@ -106,7 +106,7 @@ const UserEntry = ({ drinks, setDrinks }) => {
                     </div>
                 </div>
             )}
-            <div className="flex justify-evenly w-4/5 mb-4 mt-2 flex-none">
+            <div className="flex justify-evenly w-4/5 my-4 flex-none">
                 <button
                     className={
                         currentBeer === 1

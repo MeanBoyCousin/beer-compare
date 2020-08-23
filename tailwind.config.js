@@ -12,8 +12,9 @@ module.exports = {
                 2: 2
             },
             height: {
+                '5vh': '5vh',
                 '10vh': '10vh',
-                '90vh': '90vh',
+                '80vh': '80vh',
                 125: '125vh',
                 150: '150vh'
             },
@@ -43,7 +44,8 @@ module.exports = {
             'primary-hover': 'rgb(227, 133, 26)',
             'primary-active': 'rgb(198, 116, 23)',
             'primary-light': 'rgb(255, 191, 81)',
-            'primary-light-50': 'rgba(255, 191, 81, 0.5)',
+            'primary-light-90': 'rgba(255, 191, 81, 0.9)',
+            'primary-lighter': 'rgb(255,222,167)',
             'primary-light-hover': 'rgb(240, 180, 76)',
             'primary-light-active': 'rgb(209, 157, 66)',
             'primary-dark': 'rgb(185, 96, 0)',

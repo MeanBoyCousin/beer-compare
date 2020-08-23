@@ -9,7 +9,7 @@ const ThresholdSettings = ({ threshold, setThreshold }) => {
         <>
             <div className="relative flex justify-start items-center pb-2 w-1/5 h-10vh box-border">
                 <button
-                    className="settings-btn mt-4 ml-4 p-2 hover:shadow-sm active:shadow-md focus:outline-none"
+                    className="settings-btn mt-4 ml-4 p-2 hover:shadow-sm active:shadow-md active:outline-none"
                     onClick={() => {
                         setModalVisible(modal => {
                             return !modal
@@ -56,7 +56,7 @@ const ThresholdSettings = ({ threshold, setThreshold }) => {
                                 <input
                                     type="number"
                                     inputMode="decimal"
-                                    className="form-input text-center mt-2 transition-all duration-medium-in focus:border-primary-light-active focus:shadow-sm"
+                                    className="form-input text-center mt-2 transition-all duration-medium-in active:border-primary-light-active active:shadow-sm"
                                     placeholder={568}
                                     defaultValue={threshold.calories}
                                     onBlur={e => {
@@ -79,7 +79,7 @@ const ThresholdSettings = ({ threshold, setThreshold }) => {
                                     disabled={true}
                                     type="number"
                                     inputMode="decimal"
-                                    className="form-input text-center mt-2 opacity-disabled transition-all duration-medium-in focus:border-primary-light-active focus:shadow-sm"
+                                    className="form-input text-center mt-2 opacity-disabled transition-all duration-medium-in active:border-primary-light-active active:shadow-sm"
                                     placeholder={568}
                                     defaultValue={threshold.calories}
                                 />

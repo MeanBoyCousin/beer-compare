@@ -145,7 +145,7 @@ const BeerAdded = ({ calories }) => {
                 />
             </motion.svg>
             <motion.div
-                className="h-90vh flex flex-col justify-center items-center w-full z-10"
+                className="h-80vh flex flex-col justify-center items-center w-full z-10"
                 variants={cardVariant}
                 initial="hidden"
                 animate="animate"
