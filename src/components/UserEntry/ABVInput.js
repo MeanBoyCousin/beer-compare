@@ -1,18 +1,29 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
 const ABVInput = ({ placeholder, value, moveAway }) => {
+    const abvInput = useRef()
+
     return (
-        <input
-            type="number"
-            inputMode="decimal"
-            className="form-input text-center mb-4 focus:border-primary-light-active focus:shadow-sm"
-            placeholder={placeholder}
-            defaultValue={value}
-            onFocus={e => {
-                e.target.value = null
+        <form
+            onSubmit={e => {
+                e.preventDefault()
+                abvInput.current.blur()
             }}
-            onBlur={moveAway}
-        />
+        >
+            <input
+                ref={abvInput}
+                type="number"
+                inputMode="decimal"
+                step={0.1}
+                className="form-input text-center active:border-primary-light-active active:shadow-sm"
+                placeholder={placeholder}
+                defaultValue={value}
+                onFocus={e => {
+                    e.target.value = null
+                }}
+                onBlur={moveAway}
+            />
+        </form>
     )
 }
 
