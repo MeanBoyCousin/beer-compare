@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import { Switch, Route, useLocation, Redirect } from 'react-router-dom'
 
 import { ThresholdSettings } from './components/ThresholdSettings'
@@ -71,7 +72,7 @@ const App = () => {
     })
 
     return (
-        <>
+        <div className="overflow-hidden">
             <div className="w-full flex sticky top-0 z-20">
                 <ThresholdSettings
                     threshold={threshold}
@@ -83,27 +84,34 @@ const App = () => {
                     threshold={threshold}
                 />
             </div>
-            <Switch location={location} key={location.key}>
-                <Route exact path="/">
-                    <UserEntry drinks={drinks} setDrinks={setDrinks} />
-                </Route>
-                <Route path="/pick">
-                    <BeerCompare
-                        drinks={drinks}
-                        updateCalories={addToCalories}
-                        setLast={setLastDrinkCalories}
-                    />
-                </Route>
-                <Route path="/added">
-                    <BeerAdded calories={dailyCalories} threshold={threshold} updateCalories={addToCalories} />
-                </Route>
-                <Route path="/about">
-                    <About />
-                </Route>
-                <Redirect from="*" to="/" />
-            </Switch>
+            <AnimatePresence initial={false} exitBeforeEnter>
+                <Switch location={location} key={location.key}>
+                    <Route exact path="/">
+                        <UserEntry drinks={drinks} setDrinks={setDrinks} />
+                    </Route>
+                    <Route path="/pick">
+                        <BeerCompare
+                            drinks={drinks}
+                            updateCalories={addToCalories}
+                            setLast={setLastDrinkCalories}
+                        />
+                    </Route>
+                    <Route path="/added">
+                        <BeerAdded
+                            calories={dailyCalories}
+                            threshold={threshold}
+                            updateCalories={addToCalories}
+                            setLast={setLastDrinkCalories}
+                        />
+                    </Route>
+                    <Route path="/about">
+                        <About />
+                    </Route>
+                    <Redirect from="*" to="/" />
+                </Switch>
+            </AnimatePresence>
             <Footer />
-        </>
+        </div>
     )
 }
 

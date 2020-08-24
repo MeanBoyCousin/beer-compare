@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
+import { containerVariant } from '../motion/variants'
 import { BeerCard } from '../components/BeerCompare/BeerCard'
 import { calculateCalories } from '../helpers/calculateCalories'
 
@@ -15,7 +17,14 @@ const BeerCompare = ({ drinks, updateCalories, setLast }) => {
         calculateCalories(drinks.drinkOne) <= calculateCalories(drinks.drinkTwo)
 
     return (
-        <div className="container pt-4 pb-4 box-border">
+        <motion.div
+            key="BeerCompareContainer"
+            className="container pt-4 pb-4 box-border"
+            variants={containerVariant}
+            initial="hidden"
+            animate="animate"
+            exit="exit"
+        >
             <h1 className="text-xl flex items-center flex-none">
                 Pick a beer and then hit drink!
             </h1>
@@ -61,7 +70,7 @@ const BeerCompare = ({ drinks, updateCalories, setLast }) => {
                     Drink!
                 </Link>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

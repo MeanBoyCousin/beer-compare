@@ -2,23 +2,7 @@ import React, { useState, useEffect } from 'react'
 import CountUp from 'react-countup'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const pingVariant = {
-    hidden: { opacity: 0 },
-    animate: {
-        opacity: 1,
-        transition: {
-            duration: 0.5,
-            ease: [0, 0, 0.2, 1]
-        }
-    },
-    exit: {
-        opacity: 0,
-        transition: {
-            duration: 0.4,
-            ease: [0.4, 0, 1, 1]
-        }
-    }
-}
+import { pingVariant } from '../motion/variants'
 
 const CalCounter = ({ calories, setDailyCalories, threshold }) => {
     const [pingVisible, setPingVisible] = useState(false)

@@ -19,8 +19,20 @@ const BeerCard = ({
         container => container.volume === drink.volume
     )[0].name
 
+    const cardVariant = {
+        hidden: { opacity: 0, x: position === 1 ? -30 : 30 },
+        animate: {
+            opacity: 1,
+            x: 0,
+            transition: {
+                duration: 0.25,
+                ease: [0, 0, 0.2, 1]
+            }
+        }
+    }
+
     return (
-        <div
+        <motion.div
             className={
                 isSelected && isBestChoice
                     ? `shadow-success animate-pulse ${commonCardClasses} flex-grow-2`
@@ -28,6 +40,9 @@ const BeerCard = ({
                     ? `shadow-error animate-pulse ${commonCardClasses} flex-grow-2`
                     : `shadow-xs hover:shadow-sm ${commonCardClasses} flex-grow`
             }
+            variants={cardVariant}
+            initial="hidden"
+            animate="animate"
             onClick={() => {
                 pickDrink(position)
             }}
@@ -64,7 +79,7 @@ const BeerCard = ({
                     />
                 </svg>
             )}
-        </div>
+        </motion.div>
     )
 }
 
