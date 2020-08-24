@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 
 import { Toggle } from './ThresholdSettings/Toggle'
 
 const ThresholdSettings = ({ threshold, setThreshold }) => {
     const [modalVisible, setModalVisible] = useState(false)
+    const calorieInput = useRef()
+
+    console.log(calorieInput)
 
     return (
         <>
@@ -53,22 +56,30 @@ const ThresholdSettings = ({ threshold, setThreshold }) => {
                         />
                         {threshold.state ? (
                             <>
-                                <input
-                                    type="number"
-                                    inputMode="decimal"
-                                    className="form-input text-center mt-2 transition-all duration-medium-in active:border-primary-light-active active:shadow-sm"
-                                    placeholder={568}
-                                    defaultValue={threshold.calories}
-                                    onBlur={e => {
-                                        const newCalories = Number(
-                                            e.currentTarget.value
-                                        )
-                                        setThreshold(threshold => ({
-                                            ...threshold,
-                                            calories: newCalories
-                                        }))
+                                <form
+                                    onSubmit={e => {
+                                        e.preventDefault()
+                                        calorieInput.current.blur()
                                     }}
-                                />
+                                >
+                                    <input
+                                        ref={calorieInput}
+                                        type="number"
+                                        inputMode="decimal"
+                                        className="form-input text-center mt-2 transition-all duration-medium-in active:border-primary-light-active active:shadow-sm"
+                                        placeholder={568}
+                                        defaultValue={threshold.calories}
+                                        onBlur={e => {
+                                            const newCalories = Number(
+                                                e.currentTarget.value
+                                            )
+                                            setThreshold(threshold => ({
+                                                ...threshold,
+                                                calories: newCalories
+                                            }))
+                                        }}
+                                    />
+                                </form>
                                 <p className="text-center text-xs p-2 transition-all duration-medium-in">
                                     Set your calorie limit.
                                 </p>
