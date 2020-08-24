@@ -51,7 +51,7 @@ const cardVariant = {
     }
 }
 
-const BeerAdded = ({ calories, threshold }) => {
+const BeerAdded = ({ calories, threshold, updateCalories }) => {
     const [message, setMessage] = useState('')
 
     useEffect(() => {
@@ -172,9 +172,22 @@ const BeerAdded = ({ calories, threshold }) => {
                         power a 60-watt light bulb for{' '}
                         {calculateLightBulb(calories)}!?
                     </p>
-                    <Link className="active-btn my-2" to="/">
-                        Another?
-                    </Link>
+                    <div className="flex w-full justify-evenly">
+                        <Link className="active-btn my-2" to="/">
+                            Another?
+                        </Link>
+                        <button
+                            className="active-btn my-2"
+                            onClick={e => {
+                                updateCalories(-Number(localStorage.last))
+                                e.currentTarget.classList.remove('active-btn')
+                                e.currentTarget.classList.add('disabled-btn')
+                                localStorage.last = 0
+                            }}
+                        >
+                            Undo?
+                        </button>
+                    </div>
                 </div>
             </motion.div>
         </div>

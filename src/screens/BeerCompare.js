@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { BeerCard } from '../components/BeerCompare/BeerCard'
 import { calculateCalories } from '../helpers/calculateCalories'
 
-const BeerCompare = ({ drinks, updateCalories }) => {
+const BeerCompare = ({ drinks, updateCalories, setLast }) => {
     const [selected, setSelected] = useState(0)
 
     const pickDrink = cardNumber => {
@@ -49,15 +49,16 @@ const BeerCompare = ({ drinks, updateCalories }) => {
                     }
                     to="/added"
                     onClick={() => {
-                        selected - 1 >= 0 &&
-                            updateCalories(
-                                calculateCalories(
-                                    Object.values(drinks)[selected - 1]
-                                )
+                        if (selected - 1 >= 0) {
+                            const selectedCalories = calculateCalories(
+                                Object.values(drinks)[selected - 1]
                             )
+                            updateCalories(selectedCalories)
+                            setLast(selectedCalories)
+                        }
                     }}
                 >
-                    Drink
+                    Drink!
                 </Link>
             </div>
         </div>

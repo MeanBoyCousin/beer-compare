@@ -23,7 +23,7 @@ const faqs = [
         question: `I made a mistake, can I reset my calories for the day?`,
         answer: `Of course! Simply click the trash can icon next to the calorie counter and it'll be reset to zero.
         
-        Unfortunately as of right now, there is no way to undo individual beers, but this is another feature we are working on. Keep your eyes peeled for future updates.`
+        Equally, once you've submitted a beer, you will be given a chance to undo that beer on the final screen. Please bare in mind that this only works for undoing that one beer, not any that came before it.`
     },
     {
         question: `What's that cog in the top left corner?`,
