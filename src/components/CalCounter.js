@@ -42,10 +42,9 @@ const CalCounter = ({ calories, setDailyCalories, threshold }) => {
             <span className="relative flex justify-center items-center mt-4 mr-4 rounded-md border border-info border-opacity-disabled bg-white shadow-sm">
                 <CountUp
                     className={
-                        threshold.state === true &&
-                        calories >= threshold.calories
-                            ? `text-error ${countUpBaseClasses}`
-                            : threshold.state === true &&
+                        threshold.state && calories >= threshold.calories
+                            ? `text-error font-semibold ${countUpBaseClasses}`
+                            : threshold.state &&
                               calories >= threshold.calories * 0.8
                             ? `text-error-light ${countUpBaseClasses}`
                             : `text-black ${countUpBaseClasses}`

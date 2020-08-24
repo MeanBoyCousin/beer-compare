@@ -81,7 +81,7 @@ const App = () => {
                     />
                 </Route>
                 <Route path="/added">
-                    <BeerAdded calories={dailyCalories} />
+                    <BeerAdded calories={dailyCalories} threshold={threshold} />
                 </Route>
                 <Route path="/about">
                     <About />

@@ -51,7 +51,7 @@ const cardVariant = {
     }
 }
 
-const BeerAdded = ({ calories }) => {
+const BeerAdded = ({ calories, threshold }) => {
     const [message, setMessage] = useState('')
 
     useEffect(() => {
@@ -153,7 +153,21 @@ const BeerAdded = ({ calories }) => {
             >
                 <div className="modal">
                     <p className="text-black text-3xl mt-2">{message}</p>
-                    <p className="text-black text-xs my-2">
+                    {threshold.state && calories >= threshold.calories && (
+                        <p className="text-error font-semibold text-xs mt-2">
+                            Just to let you know, you are now over your calorie
+                            limit.
+                        </p>
+                    )}
+                    {threshold.state &&
+                        calories >= threshold.calories * 0.8 &&
+                        calories < threshold.calories && (
+                            <p className="text-error-light text-xs mt-2">
+                                Just to let you know, you are getting close to
+                                your calorie limit.
+                            </p>
+                        )}
+                    <p className="text-black text-xs mt-2">
                         Did you know that you've drunk enough so far today to
                         power a 60-watt light bulb for{' '}
                         {calculateLightBulb(calories)}!?
