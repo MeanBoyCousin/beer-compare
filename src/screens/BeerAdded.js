@@ -70,7 +70,7 @@ const BeerAdded = ({ calories }) => {
     }, [])
 
     return (
-        <div className="flex flex-col items-center text-center relative">
+        <div className="container relative">
             <motion.svg
                 viewBox="0 0 200 465"
                 className="fixed top-0 h-150"
@@ -145,7 +145,7 @@ const BeerAdded = ({ calories }) => {
                 />
             </motion.svg>
             <motion.div
-                className="h-80vh flex flex-col justify-center items-center w-full z-10"
+                className="w-full h-full flex flex-col justify-center items-center z-10"
                 variants={cardVariant}
                 initial="hidden"
                 animate="animate"

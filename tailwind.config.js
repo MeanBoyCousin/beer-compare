@@ -113,5 +113,8 @@ module.exports = {
         backgroundColor: ['responsive', 'hover', 'focus', 'active'],
         boxShadow: ['responsive', 'hover', 'focus', 'active']
     },
-    plugins: [require('@tailwindcss/custom-forms')]
+    plugins: [require('@tailwindcss/custom-forms')],
+    corePlugins: {
+        container: false
+    }
 }

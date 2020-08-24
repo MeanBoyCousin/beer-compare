@@ -9,7 +9,7 @@ const UserEntry = ({ drinks, setDrinks }) => {
     const [currentBeer, setCurrentBeer] = useState(1)
 
     return (
-        <div className="flex flex-col items-center text-center h-80vh">
+        <div className="container">
             <h1 className="text-3xl w-4/5">Beer Compare</h1>
             <h2 className="text-sm pb-2 w-4/5">
                 Compare your beers, cut those calories!

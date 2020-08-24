@@ -15,7 +15,7 @@ const BeerCompare = ({ drinks, updateCalories }) => {
         calculateCalories(drinks.drinkOne) <= calculateCalories(drinks.drinkTwo)
 
     return (
-        <div className="flex flex-col items-center text-center pt-4 pb-4 h-80vh box-border">
+        <div className="container pt-4 pb-4 box-border">
             <h1 className="text-xl flex items-center flex-none">
                 Pick a beer and then hit drink!
             </h1>

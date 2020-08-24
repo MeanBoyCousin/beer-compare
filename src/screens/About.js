@@ -8,7 +8,7 @@ const About = () => {
     const [faqsVisible, setFaqsVisible] = useState(false)
 
     return (
-        <div className="flex flex-col items-center text-center h-80vh">
+        <div className="container">
             {faqsVisible ? (
                 <>
                     <h2 className="w-4/5 text-center text-xl font-bold my-2">
