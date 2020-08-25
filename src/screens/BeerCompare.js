@@ -13,9 +13,6 @@ const BeerCompare = ({ drinks, updateCalories, setLast }) => {
         setSelected(cardNumber)
     }
 
-    const bestChoice =
-        calculateCalories(drinks.drinkOne) <= calculateCalories(drinks.drinkTwo)
-
     return (
         <motion.div
             key="BeerCompareContainer"
@@ -31,7 +28,12 @@ const BeerCompare = ({ drinks, updateCalories, setLast }) => {
                 position={1}
                 drink={drinks.drinkOne}
                 isSelected={selected === 1 ? true : false}
-                isBestChoice={bestChoice ? true : false}
+                isBestChoice={
+                    calculateCalories(drinks.drinkOne) <=
+                    calculateCalories(drinks.drinkTwo)
+                        ? true
+                        : false
+                }
                 pickDrink={pickDrink}
             />
             <BeerCard
@@ -40,7 +42,12 @@ const BeerCompare = ({ drinks, updateCalories, setLast }) => {
                 position={2}
                 drink={drinks.drinkTwo}
                 isSelected={selected === 2 ? true : false}
-                isBestChoice={bestChoice ? false : true}
+                isBestChoice={
+                    calculateCalories(drinks.drinkOne) >=
+                    calculateCalories(drinks.drinkTwo)
+                        ? true
+                        : false
+                }
                 pickDrink={pickDrink}
             />
             <div className="flex justify-evenly w-4/5 mb-4 mt-2 flex-none">
