@@ -8,24 +8,21 @@ import {
     largeYIn,
     svgStrokeIn
 } from '../motion/variants'
-import { calculateLightBulb } from '../helpers/calculateLightBulb'
+import { EnergyString } from '../components/BeerAdded/EnergyString'
+
+const messages = [
+    'A wise choice!',
+    'Cheers!',
+    'Enjoy it!',
+    'Every calorie counts!',
+    "Make sure it's a cold one!"
+]
 
 const BeerAdded = ({ calories, threshold, updateCalories, setLast }) => {
     const [message, setMessage] = useState('')
 
     useEffect(() => {
-        const messages = [
-            'A wise choice!',
-            'Cheers!',
-            'Enjoy it!',
-            'Every calorie counts!',
-            "Make sure it's a cold one!"
-        ]
-
-        const randomMessage =
-            messages[Math.floor(Math.random() * messages.length)]
-
-        setMessage(randomMessage)
+        setMessage(messages[Math.floor(Math.random() * messages.length)])
     }, [])
 
     return (
@@ -132,13 +129,7 @@ const BeerAdded = ({ calories, threshold, updateCalories, setLast }) => {
                                 your calorie limit.
                             </p>
                         )}
-                    <p className="text-black text-xs mt-2">
-                        Did you know that you've drunk enough so far today to
-                        power a 60-watt light bulb for{' '}
-                        <span className="font-semibold">
-                            {calculateLightBulb(calories)}!?
-                        </span>
-                    </p>
+                    <EnergyString calories={calories} />
                     <div className="flex w-full justify-evenly mt-2">
                         <Link className="active-btn my-2" to="/">
                             Another?
