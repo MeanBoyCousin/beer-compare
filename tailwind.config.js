@@ -29,7 +29,8 @@ module.exports = {
                 '1500': '1500ms'
             },
             animation: {
-                ping: 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite'
+                ping: 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite',
+                spin: 'spin 0.25s cubic-bezier(0, 0, 0.2, 1)'
             },
             keyframes: {
                 pulse: {
@@ -114,6 +115,7 @@ module.exports = {
         }
     },
     variants: {
+        animation: ['responsive', 'hover'],
         backgroundColor: ['responsive', 'hover', 'focus', 'active'],
         boxShadow: ['responsive', 'hover', 'focus', 'active']
     },

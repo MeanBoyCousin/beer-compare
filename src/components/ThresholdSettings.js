@@ -23,7 +23,7 @@ const ThresholdSettings = ({ threshold, setThreshold }) => {
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
-                        className="cog w-6 h-6"
+                        className="cog w-6 h-6 hover:animate-spin"
                     >
                         <path
                             strokeLinecap="round"
