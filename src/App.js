@@ -74,7 +74,7 @@ const App = () => {
 
     return (
         <div className="overflow-hidden">
-            <div className="w-full flex fixed top-0">
+            <div className="w-full flex fixed top-0 z-20">
                 <ThresholdSettings
                     threshold={threshold}
                     setThreshold={setThreshold}
