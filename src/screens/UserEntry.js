@@ -11,7 +11,7 @@ const UserEntry = ({ drinks, setDrinks }) => {
     const [currentBeer, setCurrentBeer] = useState(1)
 
     const beerEntryVariant = {
-        hidden: { opacity: 0, x: currentBeer === 1 ? '-125%' : '125%' },
+        hidden: { opacity: 0.2, x: currentBeer === 1 ? '-30px' : '30px' },
         animate: {
             opacity: 1,
             x: 0,
@@ -21,8 +21,8 @@ const UserEntry = ({ drinks, setDrinks }) => {
             }
         },
         exit: {
-            opacity: 0,
-            x: currentBeer === 1 ? '-125%' : '125%',
+            opacity: 0.2,
+            x: currentBeer === 1 ? '-30px' : '30px',
             transition: {
                 duration: 0.2,
                 ease: [0.4, 0, 1, 1]

@@ -15,11 +15,15 @@ module.exports = {
                 '5vh': '5vh',
                 '10vh': '10vh',
                 '80vh': '80vh',
+                '100vh': '100vh',
                 125: '125vh',
                 150: '150vh'
             },
             inset: {
                 'toggle-full': '1.5rem'
+            },
+            padding: {
+                '10vh': '10vh'
             },
             transitionDelay: {
                 '1500': '1500ms'

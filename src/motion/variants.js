@@ -1,5 +1,5 @@
 const containerVariant = {
-    hidden: { opacity: 0, x: 30 },
+    hidden: { opacity: 0.2, x: 30 },
     animate: {
         opacity: 1,
         x: 0,
@@ -9,7 +9,7 @@ const containerVariant = {
         }
     },
     exit: {
-        opacity: 0,
+        opacity: 0.2,
         x: -30,
         transition: {
             duration: 0.25,
@@ -19,7 +19,7 @@ const containerVariant = {
 }
 
 const mediumFadeIn = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0.2 },
     animate: {
         opacity: 1,
         transition: {
@@ -28,7 +28,7 @@ const mediumFadeIn = {
         }
     },
     exit: {
-        opacity: 0,
+        opacity: 0.2,
         transition: {
             duration: 0.2,
             ease: [0.4, 0, 1, 1]
@@ -37,7 +37,7 @@ const mediumFadeIn = {
 }
 
 const mediumXIn = {
-    hidden: { opacity: 0, x: 30 },
+    hidden: { opacity: 0.2, x: 30 },
     animate: {
         opacity: 1,
         x: 0,
@@ -49,7 +49,7 @@ const mediumXIn = {
 }
 
 const mediumXInOut = {
-    hidden: { opacity: 0, x: 30 },
+    hidden: { opacity: 0.2, x: 30 },
     animate: {
         opacity: 1,
         x: 0,
@@ -59,7 +59,7 @@ const mediumXInOut = {
         }
     },
     exit: {
-        opacity: 0,
+        opacity: 0.2,
         x: 30,
         transition: {
             duration: 0.2,
@@ -69,10 +69,10 @@ const mediumXInOut = {
 }
 
 const largeYIn = {
-    hidden: { y: -20, opacity: 0 },
+    hidden: { opacity: 0.2, y: -20 },
     animate: {
-        y: -50,
         opacity: 0.7,
+        y: -50,
         transition: {
             duration: 0.3,
             ease: [0, 0, 0.2, 1]
@@ -81,7 +81,7 @@ const largeYIn = {
 }
 
 const mediumYInOut = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0.2, y: 30 },
     animate: {
         opacity: 1,
         y: 0,
@@ -91,7 +91,7 @@ const mediumYInOut = {
         }
     },
     exit: {
-        opacity: 0,
+        opacity: 0.2,
         y: 30,
         transition: {
             duration: 0.2,
@@ -114,7 +114,7 @@ const svgStrokeIn = {
 }
 
 const pingVariant = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0.2 },
     animate: {
         opacity: 1,
         transition: {
@@ -123,7 +123,7 @@ const pingVariant = {
         }
     },
     exit: {
-        opacity: 0,
+        opacity: 0.2,
         transition: {
             duration: 0.4,
             ease: [0.4, 0, 1, 1]

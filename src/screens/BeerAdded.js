@@ -29,9 +29,9 @@ const BeerAdded = ({ calories, threshold, updateCalories, setLast }) => {
     }, [])
 
     return (
-        <div
+        <motion.div
             key="BeerAddedContainer"
-            className="container relative"
+            className="container"
             variants={containerVariant}
             initial="hidden"
             animate="animate"
@@ -155,7 +155,7 @@ const BeerAdded = ({ calories, threshold, updateCalories, setLast }) => {
                     </div>
                 </div>
             </motion.div>
-        </div>
+        </motion.div>
     )
 }
 

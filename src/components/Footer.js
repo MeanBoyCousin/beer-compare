@@ -22,7 +22,7 @@ const Footer = () => {
 
     return (
         <>
-            <div className="relative flex items-center justify-evenly bg-primary-light h-10vh border-t border-opacity-disabled border-primary-dark shadow-sm">
+            <div className="fixed bottom-0 w-full flex items-center justify-evenly bg-primary-light h-10vh border-t border-opacity-disabled border-primary-dark shadow-sm">
                 <Link
                     className="footer-btn hover:bg-primary-light-hover active:bg-primary-light-active"
                     to="/about"

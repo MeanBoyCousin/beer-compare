@@ -10,7 +10,7 @@ body {
 @tailwind utilities;
 
 .container {
-    @apply flex flex-col items-center text-center h-80vh overflow-x-hidden;
+    @apply flex flex-col items-center relative text-center h-100vh py-10vh;
 }
 
 .no-tap-highlight {
