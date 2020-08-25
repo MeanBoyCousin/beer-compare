@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
-import { Switch, Route, useLocation, Redirect } from 'react-router-dom'
+import { Switch, Route, useLocation } from 'react-router-dom'
 
 import { ThresholdSettings } from './components/ThresholdSettings'
 import { CalCounter } from './components/CalCounter'
@@ -9,6 +9,7 @@ import { BeerCompare } from './screens/BeerCompare'
 import { BeerAdded } from './screens/BeerAdded'
 import { About } from './screens/About'
 import { Footer } from './components/Footer'
+import { MotionRedirect } from './components/MotionRedirect'
 
 const App = () => {
     const location = useLocation()
@@ -107,7 +108,7 @@ const App = () => {
                     <Route path="/about">
                         <About />
                     </Route>
-                    <Redirect from="*" to="/" />
+                    <MotionRedirect to="/" />
                 </Switch>
             </AnimatePresence>
             <Footer />
