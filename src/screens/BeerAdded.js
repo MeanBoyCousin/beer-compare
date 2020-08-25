@@ -135,12 +135,23 @@ const BeerAdded = ({ calories, threshold, updateCalories, setLast }) => {
                             Another?
                         </Link>
                         <button
-                            className="active-btn my-2"
+                            className={
+                                calories === 0
+                                    ? 'disabled-btn my-2'
+                                    : 'active-btn my-2'
+                            }
+                            disabled={calories === 0}
                             onClick={e => {
-                                updateCalories(-Number(localStorage.last))
-                                e.currentTarget.classList.remove('active-btn')
-                                e.currentTarget.classList.add('disabled-btn')
-                                setLast(0)
+                                if (calories !== 0) {
+                                    updateCalories(-Number(localStorage.last))
+                                    e.currentTarget.classList.remove(
+                                        'active-btn'
+                                    )
+                                    e.currentTarget.classList.add(
+                                        'disabled-btn'
+                                    )
+                                    setLast(0)
+                                }
                             }}
                         >
                             Undo?
