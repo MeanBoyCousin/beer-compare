@@ -21,7 +21,7 @@
         "watch-tailwind": "postcss -w src/assets/styles/tailwind.css -o src/assets/styles/tailwind.bundle.css",
         "start": "run-p watch-tailwind start-react",
         "start-react": "react-scripts start",
-        "prebuild": "set NODE_ENV=production && npm run build-tailwind",
+        "prebuild": "set NODE_ENV=production&&npm run build-tailwind",
         "build": "react-scripts build",
         "launch-build": "npx serve build",
         "test": "react-scripts test",

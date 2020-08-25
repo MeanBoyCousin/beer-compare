@@ -1,7 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-    purge: ['src/**/*.js', 'src/**/*.jsx', 'public/**/*.html'],
+    purge: ['./src/**/*.js', './src/**/*.jsx', './public/**/*.html'],
     theme: {
         extend: {
             fontFamily: {
@@ -26,7 +26,7 @@ module.exports = {
                 '10vh': '10vh'
             },
             transitionDelay: {
-                '1500': '1500ms'
+                1500: '1500ms'
             },
             animation: {
                 ping: 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite',
@@ -86,18 +86,18 @@ module.exports = {
                 '0 8px 10px 1px rgba(76,175,80,0.14), 0 3px 14px 2px rgba(76,175,80,0.12), 0 5px 5px -3px rgba(76,175,80,0.20)'
         },
         opacity: {
-            '0': '0',
-            '10': '0.1',
-            '20': '0.2',
-            '30': '0.3',
+            0: '0',
+            10: '0.1',
+            20: '0.2',
+            30: '0.3',
             disabled: '0.38',
-            '40': '0.4',
-            '50': '0.5',
-            '60': '0.6',
-            '70': '0.7',
-            '80': '0.8',
-            '90': '0.9',
-            '100': '1'
+            40: '0.4',
+            50: '0.5',
+            60: '0.6',
+            70: '0.7',
+            80: '0.8',
+            90: '0.9',
+            100: '1'
         },
         transitionTimingFunction: {
             in: 'cubic-bezier(0, 0, 0.2, 1)',
