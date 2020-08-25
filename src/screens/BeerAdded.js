@@ -2,12 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
-import {
-    containerVariant,
-    mediumXIn,
-    largeYIn,
-    svgStrokeIn
-} from '../motion/variants'
+import { container, mediumXIn, largeYIn, svgStrokeIn } from '../motion/variants'
 import { EnergyString } from '../components/BeerAdded/EnergyString'
 
 const messages = [
@@ -29,7 +24,7 @@ const BeerAdded = ({ calories, threshold, updateCalories, setLast }) => {
         <motion.div
             key="BeerAddedContainer"
             className="container"
-            variants={containerVariant}
+            variants={container}
             initial="hidden"
             animate="animate"
             exit="exit"

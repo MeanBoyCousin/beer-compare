@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
-import { containerVariant } from '../motion/variants'
+import { container } from '../motion/variants'
 import { BeerCard } from '../components/BeerCompare/BeerCard'
 import { calculateCalories } from '../helpers/calculateCalories'
 
@@ -20,7 +20,7 @@ const BeerCompare = ({ drinks, updateCalories, setLast }) => {
         <motion.div
             key="BeerCompareContainer"
             className="container pt-4 pb-4 box-border"
-            variants={containerVariant}
+            variants={container}
             initial="hidden"
             animate="animate"
             exit="exit"

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
-import { containerVariant } from '../motion/variants'
+import { container } from '../motion/variants'
 import { BeerEntryCard } from '../components/UserEntry/BeerEntryCard'
 
 const UserEntry = ({ drinks, setDrinks }) => {
@@ -12,7 +12,7 @@ const UserEntry = ({ drinks, setDrinks }) => {
         <motion.div
             key="UserEntryContainer"
             className="container"
-            variants={containerVariant}
+            variants={container}
             initial="hidden"
             animate="animate"
             exit="exit"

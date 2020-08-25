@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
-import { containerVariant } from '../motion/variants'
+import { container, containerY } from '../motion/variants'
 import { QuestionAndAnswer } from '../components/About/QuestionAndAnswer'
 import { faqs } from '../helpers/faqs'
 
@@ -13,17 +13,17 @@ const About = () => {
         <motion.div
             key="AboutContainer"
             className="container"
-            variants={containerVariant}
+            variants={containerY}
             initial="hidden"
             animate="animate"
             exit="exit"
         >
-            <AnimatePresence exitBeforeEnter>
+            <AnimatePresence initial={false} exitBeforeEnter>
                 {faqsVisible ? (
                     <motion.div
                         key="FaqsTrue"
                         className="w-full flex flex-grow flex-col items-center justify-center"
-                        variants={containerVariant}
+                        variants={container}
                         initial="hidden"
                         animate="animate"
                         exit="exit"
@@ -47,7 +47,7 @@ const About = () => {
                     <motion.div
                         key="FaqsFalse"
                         className="w-full flex flex-grow flex-col items-center justify-center"
-                        variants={containerVariant}
+                        variants={container}
                         initial="hidden"
                         animate="animate"
                         exit="exit"
