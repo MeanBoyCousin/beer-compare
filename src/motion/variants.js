@@ -18,7 +18,7 @@ const containerVariant = {
     }
 }
 
-const mediumFadeIn = {
+const mediumFadeInOut = {
     hidden: { opacity: 0.2 },
     animate: {
         opacity: 1,
@@ -60,7 +60,7 @@ const mediumXInOut = {
     },
     exit: {
         opacity: 0.2,
-        x: 30,
+        x: -30,
         transition: {
             duration: 0.2,
             ease: [0.4, 0, 1, 1]
@@ -133,7 +133,7 @@ const pingVariant = {
 
 export {
     containerVariant,
-    mediumFadeIn,
+    mediumFadeInOut,
     mediumXIn,
     mediumXInOut,
     largeYIn,

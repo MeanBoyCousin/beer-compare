@@ -25,9 +25,6 @@ const BeerCompare = ({ drinks, updateCalories, setLast }) => {
             animate="animate"
             exit="exit"
         >
-            <h1 className="text-xl flex items-center flex-none">
-                Pick a beer and then hit drink!
-            </h1>
             <BeerCard
                 title="Beer One"
                 key="beer-one"

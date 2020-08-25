@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-import { mediumFadeIn, mediumXInOut } from '../motion/variants'
+import { mediumFadeInOut, mediumXInOut } from '../motion/variants'
 import { Toggle } from './ThresholdSettings/Toggle'
 
 const ThresholdSettings = ({ threshold, setThreshold }) => {
@@ -44,7 +44,7 @@ const ThresholdSettings = ({ threshold, setThreshold }) => {
                 {modalVisible && (
                     <motion.div
                         className="fixed top-0 left-0 z-30 flex items-center justify-center w-full h-full bg-black-disabled"
-                        variants={mediumFadeIn}
+                        variants={mediumFadeInOut}
                         initial="hidden"
                         animate="animate"
                         exit="exit"

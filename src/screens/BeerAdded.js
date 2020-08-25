@@ -135,9 +135,11 @@ const BeerAdded = ({ calories, threshold, updateCalories, setLast }) => {
                     <p className="text-black text-xs mt-2">
                         Did you know that you've drunk enough so far today to
                         power a 60-watt light bulb for{' '}
-                        {calculateLightBulb(calories)}!?
+                        <span className="font-semibold">
+                            {calculateLightBulb(calories)}!?
+                        </span>
                     </p>
-                    <div className="flex w-full justify-evenly">
+                    <div className="flex w-full justify-evenly mt-2">
                         <Link className="active-btn my-2" to="/">
                             Another?
                         </Link>
