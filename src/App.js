@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { Switch, Route, useLocation } from 'react-router-dom'
 
+import { ServiceWorkerWrapper } from './components/ServiceWorkerWrapper'
 import { ThresholdSettings } from './components/ThresholdSettings'
 import { CalCounter } from './components/CalCounter'
 import { UserEntry } from './screens/UserEntry'
@@ -74,6 +75,7 @@ const App = () => {
 
     return (
         <div className="overflow-hidden">
+            <ServiceWorkerWrapper />
             <div className="w-full flex fixed top-0 z-20">
                 <ThresholdSettings
                     threshold={threshold}

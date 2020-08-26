@@ -1,13 +1,13 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-import { mediumYInOut } from '../../motion/variants'
+import { mediumYUpInOut } from '../../motion/variants'
 
 const IosPrompt = ({ setIosPromptVisible }) => {
     return (
         <motion.div
             className="fixed bottom-0 left-0 z-20 flex flex-col items-center p-2 bg-white rounded-t-md border-t border-info shadow-xs"
-            variants={mediumYInOut}
+            variants={mediumYUpInOut}
             initial="hidden"
             animate="animate"
             exit="exit"

@@ -100,7 +100,7 @@ const largeYIn = {
     }
 }
 
-const mediumYInOut = {
+const mediumYUpInOut = {
     hidden: { opacity: 0.2, y: 30 },
     animate: {
         opacity: 1,
@@ -113,6 +113,26 @@ const mediumYInOut = {
     exit: {
         opacity: 0.2,
         y: 30,
+        transition: {
+            duration: 0.2,
+            ease: [0.4, 0, 1, 1]
+        }
+    }
+}
+
+const mediumYDownInOut = {
+    hidden: { opacity: 0.2, y: -30 },
+    animate: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.25,
+            ease: [0, 0, 0.2, 1]
+        }
+    },
+    exit: {
+        opacity: 0.2,
+        y: -30,
         transition: {
             duration: 0.2,
             ease: [0.4, 0, 1, 1]
@@ -158,7 +178,8 @@ export {
     mediumXIn,
     mediumXInOut,
     largeYIn,
-    mediumYInOut,
+    mediumYUpInOut,
+    mediumYDownInOut,
     svgStrokeIn,
     pingVariant
 }
