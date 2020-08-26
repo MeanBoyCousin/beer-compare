@@ -22,7 +22,7 @@ const About = () => {
                 {faqsVisible ? (
                     <motion.div
                         key="FaqsTrue"
-                        className="w-full flex flex-grow flex-col items-center justify-center"
+                        className="w-full flex flex-grow flex-col items-center justify-center overflow-y-auto"
                         variants={container}
                         initial="hidden"
                         animate="animate"
