@@ -40,6 +40,7 @@ const CalCounter = ({ calories, setDailyCalories, threshold }) => {
                         return c * ((t = t / d - 1) * t * t + 1) + b
                     }}
                     preserveValue={true}
+                    redraw={true}
                     separator=","
                     prefix="Today's beers - "
                     suffix=" kcal"
