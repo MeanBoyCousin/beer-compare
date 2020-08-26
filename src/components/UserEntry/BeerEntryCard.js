@@ -28,7 +28,7 @@ const BeerEntryCard = ({ drinks, setDrinks, currentDrink, objectRef }) => {
 
     return (
         <motion.div
-            className="relative flex flex-col items-center justify-center flex-grow w-4/5 bg-white rounded-md p-2 shadow-xs"
+            className="relative flex flex-col items-center justify-center flex-grow my-2 w-4/5 bg-white rounded-md p-2 shadow-xs"
             variants={beerEntryVariant}
             initial="hidden"
             animate="animate"

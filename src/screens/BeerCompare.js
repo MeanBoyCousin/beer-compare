@@ -22,6 +22,7 @@ const BeerCompare = ({ drinks, updateCalories, setLast }) => {
             animate="animate"
             exit="exit"
         >
+            <p className="text-3xl w-4/5">Pick your beer!</p>
             <BeerCard
                 title="Beer One"
                 key="beer-one"
@@ -50,7 +51,7 @@ const BeerCompare = ({ drinks, updateCalories, setLast }) => {
                 }
                 pickDrink={pickDrink}
             />
-            <div className="flex justify-evenly w-4/5 mb-4 mt-2 flex-none">
+            <div className="flex justify-evenly w-4/5 mt-4 mb-8 flex-none">
                 <Link className="active-btn" to="/">
                     Back
                 </Link>

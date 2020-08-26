@@ -13,7 +13,7 @@ const BeerCard = ({
     pickDrink
 }) => {
     const commonCardClasses =
-        'w-64 h-0 m-4 flex flex-col items-center justify-evenly transition-all ease-ease duration-medium-in bg-white rounded-md'
+        'w-64 h-0 my-2 flex flex-col items-center justify-evenly transition-all ease-ease duration-medium-in bg-white rounded-md'
 
     const containerName = Object.values(containers).filter(
         container => container.volume === drink.volume
