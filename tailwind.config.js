@@ -49,10 +49,9 @@ module.exports = {
             'primary-hover': 'rgb(227, 133, 26)',
             'primary-active': 'rgb(198, 116, 23)',
             'primary-light': 'rgb(255, 191, 81)',
-            'primary-light-90': 'rgba(255, 191, 81, 0.9)',
-            'primary-lighter': 'rgb(255,222,167)',
             'primary-light-hover': 'rgb(240, 180, 76)',
             'primary-light-active': 'rgb(209, 157, 66)',
+            'primary-lighter': 'rgb(255,222,167)',
             'primary-dark': 'rgb(185, 96, 0)',
             'primary-dark-hover': 'rgb(174, 90, 0)',
             'primary-dark-active': 'rgb(152, 79, 0)',
@@ -64,7 +63,32 @@ module.exports = {
             warning: 'rgb(255, 204, 0)',
             info: 'rgb(33,150,243)',
             success: 'rgb(76,175,80)',
-            transparent: 'transparent'
+            transparent: 'transparent',
+            darkmode: {
+                primary: 'rgb(243, 203, 157)',
+                'primary-xs': 'rgb(243, 198, 146)',
+                'primary-sm': 'rgb(243, 193, 136)',
+                'primary-md': 'rgb(242, 187, 125)',
+                'primary-light': 'rgb(248, 222, 178)',
+                'primary-light-xs': 'rgb(248, 220, 170)',
+                'primary-light-sm': 'rgb(249, 217, 162)',
+                'primary-light-md': 'rgb(250, 214, 154)',
+                'primary-dark': 'rgb(220, 184, 146)',
+                'primary-dark-xs': 'rgb(217, 177, 134)',
+                'primary-dark-sm': 'rgb(214, 170, 122)',
+                'primary-dark-md': 'rgb(211, 162, 109)',
+                white: 'rgb(243, 243, 243)',
+                'white-disabled': 'rgba(243, 243, 243, 0.38)',
+                black: 'rgb(12, 12, 12)',
+                'black-xs': 'rgb(30, 30, 30)',
+                'black-sm': 'rgb(42, 42, 42)',
+                'black-md': 'rgb(54, 54, 54)',
+                error: 'rgb(248, 142, 134)',
+                'error-light': 'rgb(255, 175, 160)',
+                warning: 'rgb(255, 224, 102)',
+                info: 'rgb(122, 192, 248)',
+                success: 'rgb(148, 207, 150)'
+            }
         },
         boxShadow: {
             xs:
@@ -73,17 +97,18 @@ module.exports = {
                 '0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.20)',
             md:
                 '0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.20)',
-            lg:
-                '0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.20)',
-            xl:
-                '0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.20)',
             inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
-            outline: '0 0 0 3px rgba(242, 142, 28, 0.5)',
             none: 'none',
             error:
-                '0 8px 10px 1px rgba(244,67,54,0.14), 0 3px 14px 2px rgba(244,67,54,0.12), 0 5px 5px -3px rgba(244,67,54,0.20)',
+                '0 8px 10px 1px rgba(244, 67, 54, 0.14), 0 3px 14px 2px rgba(244, 67, 54, 0.12), 0 5px 5px -3px rgba(244, 67, 54, 0.20)',
+            'darkmode-error':
+                '0 8px 10px 1px rgba(248, 142, 134, 0.14), 0 3px 14px 2px rgba(248, 142, 134, 0.12), 0 5px 5px -3px rgba(248, 142, 134, 0.20)',
             success:
-                '0 8px 10px 1px rgba(76,175,80,0.14), 0 3px 14px 2px rgba(76,175,80,0.12), 0 5px 5px -3px rgba(76,175,80,0.20)'
+                '0 8px 10px 1px rgba(76, 175, 80, 0.14), 0 3px 14px 2px rgba(76, 175, 80, 0.12), 0 5px 5px -3px rgba(76, 175, 80, 0.20)',
+            'darkmode-success':
+                '0 8px 10px 1px rgba(148, 207, 150, 0.14), 0 3px 14px 2px rgba(148, 207, 150, 0.12), 0 5px 5px -3px rgba(148, 207, 150, 0.20)',
+            input: '0 0 0 3px rgba(33, 150, 243, 0.5)',
+            'darkmode-input': '0 0 0 3px rgba(122, 192, 248, 0.5)'
         },
         opacity: {
             0: '0',

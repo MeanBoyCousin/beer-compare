@@ -5,7 +5,12 @@ import { containers } from '../../helpers/containers'
 import { ABVInput } from './ABVInput'
 import { RadioButton } from './RadioButton'
 
-const BeerEntryCard = ({ drinks, setDrinks, currentDrink, objectRef }) => {
+const BeerEntryCard = ({
+    drinksState: { drinks, setDrinks },
+    currentDrink,
+    objectRef,
+    lightMode
+}) => {
     const beerEntryVariant = {
         hidden: { opacity: 0.2, x: currentDrink === 1 ? '-30px' : '30px' },
         animate: {
@@ -28,15 +33,16 @@ const BeerEntryCard = ({ drinks, setDrinks, currentDrink, objectRef }) => {
 
     return (
         <motion.div
-            className="relative flex flex-col items-center justify-center flex-grow my-2 w-4/5 bg-white rounded-md p-2 shadow-xs"
+            className={
+                lightMode
+                    ? 'relative flex flex-col items-center justify-center flex-grow my-2 w-4/5 bg-white rounded-md p-2 shadow-xs'
+                    : 'relative flex flex-col items-center justify-center flex-grow my-2 w-4/5 bg-darkmode-black-xs rounded-md p-2 shadow-xs'
+            }
             variants={beerEntryVariant}
             initial="hidden"
             animate="animate"
             exit="exit"
         >
-            <p className="absolute bottom-0 right-0 p-2 text-sm font-semibold">
-                Beer #{currentDrink}
-            </p>
             <p className="pb-2 text-center text-lg underline">Percentage</p>
             <ABVInput
                 key={`beer-abv-${currentDrink}`}
@@ -52,12 +58,14 @@ const BeerEntryCard = ({ drinks, setDrinks, currentDrink, objectRef }) => {
                         }
                     }))
                 }}
+                lightMode={lightMode}
             />
             <p className="py-2 text-center text-lg underline">Volume</p>
             <div className="flex flex-wrap mb-2">
                 {Object.values(containers).map(container => {
                     return (
                         <RadioButton
+                            key={`${container.volume}-${currentDrink}`}
                             stringIndex="one"
                             container={container}
                             click={() => {
@@ -70,11 +78,14 @@ const BeerEntryCard = ({ drinks, setDrinks, currentDrink, objectRef }) => {
                                 }))
                             }}
                             selected={drinks[objectRef].volume}
-                            key={`${container.volume}-${currentDrink}`}
+                            lightMode={lightMode}
                         />
                     )
                 })}
             </div>
+            <p className="absolute bottom-0 right-0 p-2 text-sm font-semibold">
+                Beer #{currentDrink}
+            </p>
         </motion.div>
     )
 }

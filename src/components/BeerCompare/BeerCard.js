@@ -10,10 +10,11 @@ const BeerCard = ({
     drink,
     isSelected,
     isBestChoice,
-    pickDrink
+    pickDrink,
+    lightMode
 }) => {
     const commonCardClasses =
-        'w-64 h-0 my-2 flex flex-col items-center justify-evenly transition-all ease-ease duration-medium-in bg-white rounded-md'
+        'w-64 h-0 my-2 flex flex-col items-center justify-evenly transition-all ease-ease duration-medium-in rounded-md'
 
     const containerName = Object.values(containers).filter(
         container => container.volume === drink.volume
@@ -33,12 +34,19 @@ const BeerCard = ({
 
     return (
         <motion.div
+            // prettier-ignore
             className={
                 isSelected && isBestChoice
-                    ? `shadow-success animate-pulse ${commonCardClasses} flex-grow-2`
+                    ? `animate-pulse ${commonCardClasses} flex-grow-2 ${
+                        lightMode ? 'bg-white shadow-success' : 'bg-darkmode-black-md shadow-darkmode-success'
+                    }`
                     : isSelected && !isBestChoice
-                    ? `shadow-error animate-pulse ${commonCardClasses} flex-grow-2`
-                    : `shadow-xs hover:shadow-sm ${commonCardClasses} flex-grow`
+                    ? `animate-pulse ${commonCardClasses} flex-grow-2 ${
+                        lightMode ? 'bg-white shadow-error' : 'bg-darkmode-black-md shadow-darkmode-error'
+                    }`
+                    : `shadow-xs hover:shadow-sm ${commonCardClasses} flex-grow ${
+                        lightMode ? 'bg-white' : 'bg-darkmode-black-xs'
+                    }`
             }
             variants={cardVariant}
             initial="hidden"
@@ -61,8 +69,12 @@ const BeerCard = ({
                     stroke="currentColor"
                     className={
                         isBestChoice
-                            ? 'badge-check w-16 h-16 pt-2 text-success'
-                            : 'badge-check w-16 h-16 pt-2 text-error'
+                            ? lightMode
+                                ? 'text-success badge-check w-16 h-16 pt-2'
+                                : 'text-darkmode-success badge-check w-16 h-16 pt-2'
+                            : lightMode
+                            ? 'text-error badge-check w-16 h-16 pt-2'
+                            : 'text-darkmode-error badge-check w-16 h-16 pt-2'
                     }
                 >
                     <motion.path

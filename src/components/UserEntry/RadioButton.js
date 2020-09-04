@@ -4,7 +4,8 @@ const RadioButton = ({
     stringIndex,
     container: { name, volume },
     click,
-    selected
+    selected,
+    lightMode
 }) => {
     return (
         <label className="flex flex-col flex-wrap items-center content-center text-center pt-2 px-2 flex-grow w-1/3">
@@ -12,8 +13,12 @@ const RadioButton = ({
                 type="radio"
                 className={
                     selected === volume
-                        ? 'form-radio mb-1 text-primary-active border-primary shadow-sm active:shadow-sm active:border-primary-active'
-                        : 'form-radio mb-1 border-primary-dark'
+                        ? lightMode
+                            ? 'text-primary-active border-primary focus:border-info focus:shadow-input form-radio mb-1 shadow-sm active:shadow-sm'
+                            : 'text-darkmode-primary-sm border-darkmode-primary bg-darkmode-black focus:border-darkmode-info focus:shadow-darkmode-input form-radio mb-1 shadow-sm active:shadow-sm'
+                        : lightMode
+                        ? 'border-primary-dark focus:border-info focus:shadow-input form-radio mb-1'
+                        : 'border-darkmode-primary-dark bg-darkmode-black focus:border-darkmode-info focus:shadow-darkmode-input form-radio mb-1'
                 }
                 name={`volume-${stringIndex}`}
                 id={`${volume}-${stringIndex}`}

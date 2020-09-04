@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 
-const ABVInput = ({ placeholder, value, moveAway }) => {
+const ABVInput = ({ placeholder, value, moveAway, lightMode }) => {
     const abvInput = useRef()
 
     return (
@@ -15,7 +15,11 @@ const ABVInput = ({ placeholder, value, moveAway }) => {
                 type="number"
                 inputMode="decimal"
                 step={0.1}
-                className="form-input text-center active:border-primary-light-active active:shadow-sm"
+                className={
+                    lightMode
+                        ? 'form-input text-center bg-white active:border-primary-light-active active:shadow-sm focus:border-info focus:shadow-input'
+                        : 'form-input text-center bg-darkmode-black active:border-primary-light-active active:shadow-sm active:bg-darkmode-black-sm focus:border-darkmode-info focus:shadow-darkmode-input'
+                }
                 placeholder={placeholder}
                 defaultValue={value}
                 onFocus={e => {

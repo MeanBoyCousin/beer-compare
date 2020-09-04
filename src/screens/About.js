@@ -6,7 +6,7 @@ import { container, containerY } from '../motion/variants'
 import { QuestionAndAnswer } from '../components/About/QuestionAndAnswer'
 import { faqs } from '../helpers/faqs'
 
-const About = () => {
+const About = ({ lightMode }) => {
     const [faqsVisible, setFaqsVisible] = useState(false)
 
     return (
@@ -38,6 +38,7 @@ const About = () => {
                                         key={`faq${index}`}
                                         question={faq.question}
                                         answer={faq.answer}
+                                        lightMode={lightMode}
                                     />
                                 )
                             })}
@@ -67,11 +68,22 @@ const About = () => {
             </AnimatePresence>
             <div className="w-full flex-none flex flex-col justify-end items-center">
                 <div className="flex justify-evenly w-4/5 my-2">
-                    <Link className="active-btn my-2" to="/">
+                    <Link
+                        className={
+                            lightMode
+                                ? 'active-btn my-2'
+                                : 'active-btn-dark my-2'
+                        }
+                        to="/"
+                    >
                         Home
                     </Link>
                     <button
-                        className="active-btn my-2"
+                        className={
+                            lightMode
+                                ? 'active-btn my-2'
+                                : 'active-btn-dark my-2'
+                        }
                         onClick={() => {
                             setFaqsVisible(state => {
                                 return !state

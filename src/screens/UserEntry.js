@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { container } from '../motion/variants'
 import { BeerEntryCard } from '../components/UserEntry/BeerEntryCard'
 
-const UserEntry = ({ drinks, setDrinks }) => {
+const UserEntry = ({ drinksState: { drinks, setDrinks }, lightMode }) => {
     const [currentDrink, setCurrentDrink] = useState(1)
 
     return (
@@ -21,30 +21,42 @@ const UserEntry = ({ drinks, setDrinks }) => {
             <h2 className="text-sm pb-2 w-4/5">
                 Compare your beers, cut those calories!
             </h2>
-            <hr className="border-primary-dark opacity-disabled mt-2 mb-4 w-full" />
+            <hr
+                className={
+                    lightMode
+                        ? 'border-primary-dark opacity-disabled mt-2 mb-4 w-full'
+                        : 'border-darkmode-primary-dark opacity-disabled mt-2 mb-4 w-full'
+                }
+            />
             <AnimatePresence initial={false} exitBeforeEnter>
                 {currentDrink === 1 ? (
                     <BeerEntryCard
                         key={`BeerEntryCard${currentDrink}`}
-                        drinks={drinks}
-                        setDrinks={setDrinks}
+                        drinksState={{ drinks, setDrinks }}
                         currentDrink={currentDrink}
                         objectRef="drinkOne"
+                        lightMode={lightMode}
                     />
                 ) : (
                     <BeerEntryCard
                         key={`BeerEntryCard${currentDrink}`}
-                        drinks={drinks}
-                        setDrinks={setDrinks}
+                        drinksState={{ drinks, setDrinks }}
                         currentDrink={currentDrink}
                         objectRef="drinkTwo"
+                        lightMode={lightMode}
                     />
                 )}
             </AnimatePresence>
             <div className="flex justify-evenly w-4/5 mt-4 mb-8 flex-none">
                 <button
                     className={
-                        currentDrink === 1 ? 'disabled-btn' : 'active-btn'
+                        currentDrink === 1
+                            ? lightMode
+                                ? 'disabled-btn'
+                                : 'disabled-btn-dark'
+                            : lightMode
+                            ? 'active-btn'
+                            : 'active-btn-dark'
                     }
                     onClick={() => {
                         setCurrentDrink(1)
@@ -54,7 +66,7 @@ const UserEntry = ({ drinks, setDrinks }) => {
                 </button>
                 {currentDrink === 1 ? (
                     <button
-                        className="active-btn"
+                        className={lightMode ? 'active-btn' : 'active-btn-dark'}
                         onClick={() => {
                             setCurrentDrink(2)
                         }}
@@ -62,7 +74,10 @@ const UserEntry = ({ drinks, setDrinks }) => {
                         Next Beer
                     </button>
                 ) : (
-                    <Link className="active-btn" to="/pick">
+                    <Link
+                        className={lightMode ? 'active-btn' : 'active-btn-dark'}
+                        to="/pick"
+                    >
                         Compare
                     </Link>
                 )}

@@ -4,7 +4,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 import { pingVariant } from '../motion/variants'
 
-const CalCounter = ({ calories, setDailyCalories, threshold }) => {
+const CalCounter = ({
+    calorieState: { dailyCalories, setDailyCalories },
+    threshold,
+    lightMode
+}) => {
     const [pingVisible, setPingVisible] = useState(false)
 
     useEffect(() => {
@@ -16,25 +20,34 @@ const CalCounter = ({ calories, setDailyCalories, threshold }) => {
         return () => {
             clearTimeout(pingTimer)
         }
-    }, [calories])
-
-    const countUpBaseClasses =
-        'p-2 border-r border-info transition-all duration-2s'
+    }, [dailyCalories])
 
     return (
         <div className="relative flex justify-end items-center pb-2 w-4/5 h-10vh box-border">
-            <span className="relative flex justify-center items-center mt-4 mr-4 rounded-md border border-info border-opacity-disabled bg-white shadow-sm">
+            <span
+                className={
+                    lightMode
+                        ? 'relative flex justify-center items-center mt-4 mr-4 rounded-md border border-info border-opacity-disabled bg-white shadow-sm'
+                        : 'relative flex justify-center items-center mt-4 mr-4 rounded-md border border-darkmode-info border-opacity-disabled bg-darkmode-black-sm shadow-sm'
+                }
+            >
                 <CountUp
+                    // prettier-ignore
                     className={
-                        threshold.state && calories >= threshold.calories
-                            ? `text-error font-semibold ${countUpBaseClasses}`
-                            : threshold.state &&
-                              calories >= threshold.calories * 0.8
-                            ? `text-error-light ${countUpBaseClasses}`
-                            : `text-black ${countUpBaseClasses}`
+                        lightMode
+                            ? threshold.state && dailyCalories >= threshold.calories
+                                ? 'text-error font-semibold p-2 border-r border-info border-opacity-disabled transition-all duration-2s'
+                                : threshold.state && dailyCalories >= threshold.calories * 0.8
+                                ? 'text-error-light p-2 border-r border-info border-opacity-disabled transition-all duration-2s'
+                                : 'text-black p-2 border-r border-info border-opacity-disabled transition-all duration-2s'
+                            : threshold.state && dailyCalories >= threshold.calories
+                            ? 'text-darkmode-error font-semibold p-2 border-r border-darkmode-info border-opacity-disabled transition-all duration-2s'
+                            : threshold.state && dailyCalories >= threshold.calories * 0.8
+                            ? 'text-darkmode-error-light p-2 border-r border-darkmode-info border-opacity-disabled transition-all duration-2s'
+                            : 'text-darkmode-white p-2 border-r border-darkmode-info border-opacity-disabled transition-all duration-2s'
                     }
                     start={0}
-                    end={calories}
+                    end={dailyCalories}
                     duration={2}
                     easingFn={(t, b, c, d) => {
                         return c * ((t = t / d - 1) * t * t + 1) + b
@@ -54,8 +67,20 @@ const CalCounter = ({ calories, setDailyCalories, threshold }) => {
                             animate="animate"
                             exit="exit"
                         >
-                            <span className="animate-ping absolute h-3 w-3 rounded-md bg-info"></span>
-                            <span className="relative inline-flex rounded-md h-3 w-3 bg-info"></span>
+                            <span
+                                className={
+                                    lightMode
+                                        ? 'animate-ping absolute h-3 w-3 rounded-md bg-info'
+                                        : 'animate-ping absolute h-3 w-3 rounded-md bg-darkmode-info'
+                                }
+                            ></span>
+                            <span
+                                className={
+                                    lightMode
+                                        ? 'relative inline-flex rounded-md h-3 w-3 bg-info'
+                                        : 'relative inline-flex rounded-md h-3 w-3 bg-darkmode-info'
+                                }
+                            ></span>
                         </motion.span>
                     )}
                 </AnimatePresence>
@@ -64,12 +89,12 @@ const CalCounter = ({ calories, setDailyCalories, threshold }) => {
                     fill="none"
                     stroke="currentColor"
                     className={
-                        calories === 0
+                        dailyCalories === 0
                             ? 'trash w-6 h-6 p-2 box-content opacity-disabled transition ease-out duration-medium-out delay-1500 cursor-pointer'
                             : 'trash w-6 h-6 p-2 box-content transition ease-in duration-medium-in cursor-pointer'
                     }
                     onClick={() => {
-                        if (calories !== 0) {
+                        if (dailyCalories !== 0) {
                             setDailyCalories(0)
                             localStorage.calories = 0
                         }

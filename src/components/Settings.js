@@ -2,9 +2,13 @@ import React, { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import { mediumFadeInOut, mediumXInOut } from '../motion/variants'
-import { Toggle } from './ThresholdSettings/Toggle'
+import { ColorModeSwitch } from './Settings/ColorModeSwitch'
+import { Toggle } from './Settings/Toggle'
 
-const ThresholdSettings = ({ threshold, setThreshold }) => {
+const Settings = ({
+    thresholdState: { threshold, setThreshold },
+    lightModeState: { lightMode, setLightMode }
+}) => {
     const [modalVisible, setModalVisible] = useState(false)
     const calorieInput = useRef()
 
@@ -12,7 +16,11 @@ const ThresholdSettings = ({ threshold, setThreshold }) => {
         <>
             <div className="relative flex justify-start items-center pb-2 w-1/5 h-10vh box-border">
                 <button
-                    className="settings-btn mt-4 ml-4 p-2 hover:shadow-sm active:shadow-md active:outline-none"
+                    className={
+                        lightMode
+                            ? 'settings-btn mt-4 ml-4 p-2 hover:shadow-sm active:shadow-md focus:outline-none'
+                            : 'settings-btn-dark hover:bg-darkmode-black-sm active:bg-darkmode-black-md mt-4 ml-4 p-2 hover:shadow-sm active:shadow-md focus:outline-none'
+                    }
                     onClick={() => {
                         setModalVisible(modal => {
                             return !modal
@@ -43,19 +51,29 @@ const ThresholdSettings = ({ threshold, setThreshold }) => {
             <AnimatePresence>
                 {modalVisible && (
                     <motion.div
-                        className="fixed top-0 left-0 z-30 flex items-center justify-center w-full h-full bg-black-disabled"
+                        className={
+                            lightMode
+                                ? 'bg-black-disabled fixed top-0 left-0 z-30 flex items-center justify-center w-full h-full'
+                                : 'bg-darkmode-white-disabled fixed top-0 left-0 z-30 flex items-center justify-center w-full h-full'
+                        }
                         variants={mediumFadeInOut}
                         initial="hidden"
                         animate="animate"
                         exit="exit"
                     >
                         <motion.div
-                            className="modal"
+                            className={lightMode ? 'modal' : 'modal-dark'}
                             variants={mediumXInOut}
                             initial="hidden"
                             animate="animate"
                             exit="exit"
                         >
+                            <h2 className="text-center text-sm p-2">
+                                Light mode or Dark Mode?
+                            </h2>
+                            <ColorModeSwitch
+                                lightModeState={{ lightMode, setLightMode }}
+                            />
                             <h2 className="text-center text-sm p-2">
                                 Use the below settings to specify a threshold
                                 for your calories. You will then be warned when
@@ -66,6 +84,7 @@ const ThresholdSettings = ({ threshold, setThreshold }) => {
                                 onLabel="Turn off"
                                 initial={threshold}
                                 setThreshold={setThreshold}
+                                lightMode={lightMode}
                             />
                             {threshold.state ? (
                                 <>
@@ -79,7 +98,11 @@ const ThresholdSettings = ({ threshold, setThreshold }) => {
                                             ref={calorieInput}
                                             type="number"
                                             inputMode="decimal"
-                                            className="form-input text-center mt-2 transition-all duration-medium-in active:border-primary-light-active active:shadow-sm"
+                                            className={
+                                                lightMode
+                                                    ? 'bg-white form-input text-center mt-2 transition-all duration-medium-in active:border-primary-light-active active:shadow-sm'
+                                                    : 'bg-darkmode-black active:bg-darkmode-black-sm form-input text-center mt-2 transition-all duration-medium-in active:border-primary-light-active active:shadow-sm'
+                                            }
                                             placeholder={568}
                                             defaultValue={threshold.calories}
                                             onBlur={e => {
@@ -103,7 +126,11 @@ const ThresholdSettings = ({ threshold, setThreshold }) => {
                                         disabled={true}
                                         type="number"
                                         inputMode="decimal"
-                                        className="form-input text-center mt-2 opacity-disabled transition-all duration-medium-in active:border-primary-light-active active:shadow-sm"
+                                        className={
+                                            lightMode
+                                                ? 'bg-white form-input text-center mt-2 opacity-disabled transition-all duration-medium-in active:border-primary-light-active active:shadow-sm'
+                                                : 'bg-darkmode-black active:bg-darkmode-black-sm form-input text-center mt-2 opacity-disabled transition-all duration-medium-in active:border-primary-light-active active:shadow-sm'
+                                        }
                                         placeholder={568}
                                         defaultValue={threshold.calories}
                                     />
@@ -113,7 +140,11 @@ const ThresholdSettings = ({ threshold, setThreshold }) => {
                                 </>
                             )}
                             <button
-                                className="active-btn m-2"
+                                className={
+                                    lightMode
+                                        ? 'active-btn m-2'
+                                        : 'active-btn-dark m-2'
+                                }
                                 onClick={() => {
                                     setModalVisible(modal => {
                                         return !modal
@@ -130,4 +161,4 @@ const ThresholdSettings = ({ threshold, setThreshold }) => {
     )
 }
 
-export { ThresholdSettings }
+export { Settings }

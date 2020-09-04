@@ -28,8 +28,10 @@ const faqs = [
     {
         question: `What's that cog in the top left corner?`,
         answer: `This is your device settings area. Click the cog and a small window will pop open where you can set a couple of options.
+
+        The first option allows you to switch the app between light and dark mode. Set this however you prefer.
         
-        Toggling the switch to the on position will engage a threshold warning system across the app. You can enter an upper limit of calories that you are aiming to stay under and then receive warnings when you get close to that number for the day. When you're less than 20% below your target, the calorie counter text will turn a pale red color. If you go over, it will turn a stronger red color.
+        Toggling the second switch to the on position will engage a threshold warning system across the app. You can enter an upper limit of calories that you are aiming to stay under and then receive warnings when you get close to that number for the day. When you're less than 20% below your target, the calorie counter text will turn a pale red color. If you go over, it will turn a stronger red color.
         
         This is us gently warning you that you've surpassed your own target. This won't stop the app from functioning though so don't fear if you decide to go over.`
     },

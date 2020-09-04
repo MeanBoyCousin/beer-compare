@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const QuestionAndAnswer = ({ question, answer }) => {
+const QuestionAndAnswer = ({ question, answer, lightMode }) => {
     const [answerVisible, setAnswerVisible] = useState(false)
 
     return (
@@ -22,11 +22,23 @@ const QuestionAndAnswer = ({ question, answer }) => {
             >
                 {question}
             </h3>
-            <hr className="border-primary-dark opacity-disabled my-2 w-full" />
+            <hr
+                className={
+                    lightMode
+                        ? 'border-primary-dark opacity-disabled my-2 w-full'
+                        : 'border-darkmode-primary-dark opacity-disabled my-2 w-full'
+                }
+            />
             {answerVisible && (
                 <>
                     <p className="text-xs">{answer}</p>
-                    <hr className="border-primary-dark opacity-disabled my-2 w-full" />
+                    <hr
+                        className={
+                            lightMode
+                                ? 'border-primary-dark opacity-disabled my-2 w-full'
+                                : 'border-darkmode-primary-dark opacity-disabled my-2 w-full'
+                        }
+                    />
                 </>
             )}
         </div>

@@ -3,7 +3,7 @@ import { AnimatePresence } from 'framer-motion'
 import { Switch, Route, useLocation } from 'react-router-dom'
 
 import { ServiceWorkerWrapper } from './components/ServiceWorkerWrapper'
-import { ThresholdSettings } from './components/ThresholdSettings'
+import { Settings } from './components/Settings'
 import { CalCounter } from './components/CalCounter'
 import { UserEntry } from './screens/UserEntry'
 import { BeerCompare } from './screens/BeerCompare'
@@ -14,6 +14,37 @@ import { MotionRedirect } from './components/MotionRedirect'
 
 const App = () => {
     const location = useLocation()
+
+    // Set state for color mode.
+    const [lightMode, setLightMode] = useState(
+        localStorage.colorMode === undefined
+            ? true
+            : JSON.parse(localStorage.colorMode)
+    )
+
+    useEffect(() => {
+        localStorage.colorMode = JSON.stringify(lightMode)
+
+        // Set body transitions and color based on color mode.
+        document.body.classList.add(
+            'transition-colors',
+            'duration-large-in',
+            'ease-ease'
+        )
+        if (lightMode) {
+            document.body.classList.remove(
+                'bg-darkmode-black',
+                'text-darkmode-white'
+            )
+            document.body.classList.add('bg-primary-lighter', 'text-black')
+        } else {
+            document.body.classList.remove('bg-primary-lighter', 'text-black')
+            document.body.classList.add(
+                'bg-darkmode-black',
+                'text-darkmode-white'
+            )
+        }
+    }, [lightMode])
 
     // Setup user threshold settings and set/update localStorage when user settings change.
     const [threshold, setThreshold] = useState(
@@ -74,29 +105,33 @@ const App = () => {
     })
 
     return (
-        <div className="overflow-hidden">
+        <div className="relative overflow-hidden">
             <ServiceWorkerWrapper />
             <div className="w-full flex fixed top-0 z-20">
-                <ThresholdSettings
-                    threshold={threshold}
-                    setThreshold={setThreshold}
+                <Settings
+                    thresholdState={{ threshold, setThreshold }}
+                    lightModeState={{ lightMode, setLightMode }}
                 />
                 <CalCounter
-                    calories={dailyCalories}
-                    setDailyCalories={setDailyCalories}
+                    calorieState={{ dailyCalories, setDailyCalories }}
                     threshold={threshold}
+                    lightMode={lightMode}
                 />
             </div>
             <AnimatePresence initial={false} exitBeforeEnter>
                 <Switch location={location} key={location.key}>
                     <Route exact path="/">
-                        <UserEntry drinks={drinks} setDrinks={setDrinks} />
+                        <UserEntry
+                            drinksState={{ drinks, setDrinks }}
+                            lightMode={lightMode}
+                        />
                     </Route>
                     <Route path="/pick">
                         <BeerCompare
                             drinks={drinks}
                             updateCalories={addToCalories}
                             setLast={setLastDrinkCalories}
+                            lightMode={lightMode}
                         />
                     </Route>
                     <Route path="/added">
@@ -105,15 +140,16 @@ const App = () => {
                             threshold={threshold}
                             updateCalories={addToCalories}
                             setLast={setLastDrinkCalories}
+                            lightMode={lightMode}
                         />
                     </Route>
                     <Route path="/about">
-                        <About />
+                        <About lightMode={lightMode}/>
                     </Route>
                     <MotionRedirect to="/" />
                 </Switch>
             </AnimatePresence>
-            <Footer />
+            <Footer lightMode={lightMode} />
         </div>
     )
 }

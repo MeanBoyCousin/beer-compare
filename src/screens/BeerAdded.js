@@ -13,7 +13,13 @@ const messages = [
     "Make sure it's a cold one!"
 ]
 
-const BeerAdded = ({ calories, threshold, updateCalories, setLast }) => {
+const BeerAdded = ({
+    calories,
+    threshold,
+    updateCalories,
+    setLast,
+    lightMode
+}) => {
     const [message, setMessage] = useState('')
 
     useEffect(() => {
@@ -38,11 +44,15 @@ const BeerAdded = ({ calories, threshold, updateCalories, setLast }) => {
                 exit="exit"
             >
                 <motion.path
-                    fill="rgb(255, 191, 81)"
+                    fill={
+                        lightMode ? 'rgb(255, 191, 81)' : 'rgb(248, 222, 178)'
+                    }
                     d="M 168.794 245.281 C 177.523 212.657 187.67 165.085 191.926 108.674 L 7.965 108.674 C 12.22 164.975 22.368 212.657 31.097 245.281 C 40.698 281.178 45.717 318.058 45.936 355.155 L 153.846 355.155 C 154.173 318.058 159.083 281.069 168.794 245.281 Z"
                 />
                 <motion.path
-                    fill="rgb(242, 142, 28)"
+                    fill={
+                        lightMode ? 'rgb(242, 142, 28)' : 'rgb(243, 203, 157)'
+                    }
                     d="M 153.846 355.155 L 45.936 355.155 C 45.936 356.465 45.936 357.665 45.936 358.974 L 45.936 432.624 L 153.737 432.624 L 153.737 358.974 C 153.846 357.665 153.846 356.465 153.846 355.155 Z"
                 />
                 <motion.path
@@ -52,7 +62,7 @@ const BeerAdded = ({ calories, threshold, updateCalories, setLast }) => {
                 <motion.path
                     stroke="#fff"
                     strokeWidth={3}
-                    fill="#000"
+                    fill={lightMode ? 'rgb(0, 0, 0)' : 'rgb(12, 12, 12)'}
                     variants={svgStrokeIn}
                     initial="hidden"
                     animate="animate"
@@ -65,7 +75,7 @@ const BeerAdded = ({ calories, threshold, updateCalories, setLast }) => {
                 <motion.path
                     stroke="#fff"
                     strokeWidth={3}
-                    fill="#000"
+                    fill={lightMode ? 'rgb(0, 0, 0)' : 'rgb(12, 12, 12)'}
                     variants={svgStrokeIn}
                     initial="hidden"
                     animate="animate"
@@ -74,7 +84,7 @@ const BeerAdded = ({ calories, threshold, updateCalories, setLast }) => {
                 <motion.path
                     stroke="#fff"
                     strokeWidth={3}
-                    fill="#000"
+                    fill={lightMode ? 'rgb(0, 0, 0)' : 'rgb(12, 12, 12)'}
                     variants={svgStrokeIn}
                     initial="hidden"
                     animate="animate"
@@ -95,7 +105,7 @@ const BeerAdded = ({ calories, threshold, updateCalories, setLast }) => {
                 <motion.path
                     stroke="#fff"
                     strokeWidth={3}
-                    fill="#000"
+                    fill={lightMode ? 'rgb(0, 0, 0)' : 'rgb(12, 12, 12)'}
                     variants={svgStrokeIn}
                     initial="hidden"
                     animate="animate"
@@ -108,10 +118,16 @@ const BeerAdded = ({ calories, threshold, updateCalories, setLast }) => {
                 initial="hidden"
                 animate="animate"
             >
-                <div className="modal">
-                    <p className="text-black text-3xl mt-2">{message}</p>
+                <div className={lightMode ? 'modal' : 'modal-dark'}>
+                    <p className="text-3xl mt-2">{message}</p>
                     {threshold.state && calories >= threshold.calories && (
-                        <p className="text-error font-semibold text-xs mt-2">
+                        <p
+                            className={
+                                lightMode
+                                    ? 'text-error font-semibold text-xs mt-2'
+                                    : 'text-darkmode-error font-semibold text-xs mt-2'
+                            }
+                        >
                             Just to let you know, you are now over your calorie
                             limit.
                         </p>
@@ -119,32 +135,56 @@ const BeerAdded = ({ calories, threshold, updateCalories, setLast }) => {
                     {threshold.state &&
                         calories >= threshold.calories * 0.8 &&
                         calories < threshold.calories && (
-                            <p className="text-error-light text-xs mt-2">
+                            <p
+                                className={
+                                    lightMode
+                                        ? 'text-error-light text-xs mt-2'
+                                        : 'text-darkmode-error-light text-xs mt-2'
+                                }
+                            >
                                 Just to let you know, you are getting close to
                                 your calorie limit.
                             </p>
                         )}
                     <EnergyString calories={calories} />
-                    <div className="flex w-full justify-evenly mt-2">
-                        <Link className="active-btn my-2" to="/">
+                    <div className="flex w-full justify-evenly mt-4 mb-2">
+                        <Link
+                            className={
+                                lightMode ? 'active-btn' : 'active-btn-dark'
+                            }
+                            to="/"
+                        >
                             Another?
                         </Link>
                         <button
                             className={
                                 calories === 0
-                                    ? 'disabled-btn my-2'
-                                    : 'active-btn my-2'
+                                    ? lightMode
+                                        ? 'disabled-btn'
+                                        : 'disabled-btn-dark'
+                                    : lightMode
+                                    ? 'active-btn'
+                                    : 'active-btn-dark'
                             }
                             disabled={calories === 0}
                             onClick={e => {
                                 if (calories !== 0) {
                                     updateCalories(-Number(localStorage.last))
-                                    e.currentTarget.classList.remove(
-                                        'active-btn'
-                                    )
-                                    e.currentTarget.classList.add(
-                                        'disabled-btn'
-                                    )
+                                    if (lightMode) {
+                                        e.currentTarget.classList.remove(
+                                            'active-btn'
+                                        )
+                                        e.currentTarget.classList.add(
+                                            'disabled-btn'
+                                        )
+                                    } else {
+                                        e.currentTarget.classList.remove(
+                                            'active-btn-dark'
+                                        )
+                                        e.currentTarget.classList.add(
+                                            'disabled-btn-dark'
+                                        )
+                                    }
                                     setLast(0)
                                 }
                             }}

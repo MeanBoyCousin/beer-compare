@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { isIos, isInStandaloneMode } from '../helpers/iOSPromptCheckers'
 import { IosPrompt } from './Footer/IosPrompt'
 
-const Footer = () => {
+const Footer = ({ lightMode }) => {
     const [event, setEvent] = useState(undefined) // For platforms that support native PWA prompt.
     const [isIosBrowser, setIsIosBrowser] = useState(false) // For iOS devices with no native PWA prompt.
     const [iosPromptVisible, setIosPromptVisible] = useState(false)
@@ -23,16 +23,30 @@ const Footer = () => {
 
     return (
         <>
-            <div className="fixed bottom-0 w-full flex items-center justify-evenly bg-primary-light h-10vh border-t border-opacity-disabled border-primary-dark shadow-sm">
+            <div
+                className={
+                    lightMode
+                        ? 'fixed bottom-0 w-full flex items-center justify-evenly bg-primary-light h-10vh border-t border-opacity-disabled border-primary-dark shadow-sm'
+                        : 'fixed bottom-0 w-full flex items-center justify-evenly bg-darkmode-black-xs h-10vh border-t border-opacity-disabled border-darkmode-primary-dark shadow-sm'
+                }
+            >
                 <Link
-                    className="footer-btn hover:bg-primary-light-hover active:bg-primary-light-active"
+                    className={
+                        lightMode
+                            ? 'footer-btn hover:bg-primary-light-hover active:bg-primary-light-active'
+                            : 'footer-btn hover:bg-darkmode-black-sm active:bg-darkmode-black-md'
+                    }
                     to="/about"
                 >
                     What is this?
                 </Link>
                 {!isInStandaloneMode() && (
                     <button
-                        className="footer-btn flex items-center justify-center hover:bg-primary-light-hover active:bg-primary-light-active focus:outline-none"
+                        className={
+                            lightMode
+                                ? 'footer-btn flex items-center justify-center hover:bg-primary-light-hover active:bg-primary-light-active focus:outline-none'
+                                : 'footer-btn flex items-center justify-center hover:bg-darkmode-black-sm active:bg-darkmode-black-md focus:outline-none'
+                        }
                         onClick={() => {
                             if (event !== undefined && isIosBrowser === false) {
                                 event.prompt()
@@ -72,7 +86,10 @@ const Footer = () => {
             </div>
             <AnimatePresence>
                 {iosPromptVisible && (
-                    <IosPrompt setIosPromptVisible={setIosPromptVisible} />
+                    <IosPrompt
+                        setIosPromptVisible={setIosPromptVisible}
+                        lightMode={lightMode}
+                    />
                 )}
             </AnimatePresence>
         </>

@@ -14,7 +14,7 @@ const EnergyString = ({ calories }) => {
     return (
         <>
             {energyFuncIndex !== undefined && (
-                <p className="text-black text-xs mt-2">
+                <p className="text-xs mt-2">
                     {Object.values(calculateEnergy)[energyFuncIndex].message}
                     <span className="font-semibold">
                         {Object.values(calculateEnergy)[
