@@ -106,7 +106,7 @@ const App = () => {
 
     return (
         <div className="relative overflow-hidden">
-            <ServiceWorkerWrapper />
+            <ServiceWorkerWrapper lightMode={lightMode} />
             <div className="w-full flex fixed top-0 z-20">
                 <Settings
                     thresholdState={{ threshold, setThreshold }}
