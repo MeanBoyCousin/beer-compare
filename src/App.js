@@ -17,13 +17,13 @@ const App = () => {
 
     // Set state for color mode.
     const [lightMode, setLightMode] = useState(
-        localStorage.colorMode === undefined
+        localStorage.lightMode === undefined
             ? true
-            : JSON.parse(localStorage.colorMode)
+            : JSON.parse(localStorage.lightMode)
     )
 
     useEffect(() => {
-        localStorage.colorMode = JSON.stringify(lightMode)
+        localStorage.lightMode = JSON.stringify(lightMode)
 
         // Set body transitions and color based on color mode.
         document.body.classList.add(
@@ -144,7 +144,7 @@ const App = () => {
                         />
                     </Route>
                     <Route path="/about">
-                        <About lightMode={lightMode}/>
+                        <About lightMode={lightMode} />
                     </Route>
                     <MotionRedirect to="/" />
                 </Switch>
